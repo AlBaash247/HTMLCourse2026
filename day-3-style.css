@@ -1,0 +1,38 @@
+
+      h1 {
+         color: turquoise;
+         background-color: gray;
+         border: 10px solid turquoise;
+         padding: 24px;
+         margin: 124px;
+         border-radius: 124px;
+         cursor: pointer;
+         box-shadow: 5px 10px #e7e6e699;
+      }
+
+    h2 {
+         color: tomato;
+         background-color: gray;
+         border: 10px solid tomato;
+         padding: 24px;
+         margin: 124px;
+         border-radius: 124px;
+         cursor: pointer;
+         box-shadow: 5px 10px #e7e6e699;
+      }
+
+
+
+
+      .important-text{
+            font-size: 124px;
+            height: 500px ;
+            width: 500px;
+      }
+
+      .wh-100{
+         width: 500px;
+         height: 500px;
+        border-radius: 500px;
+      }
+
