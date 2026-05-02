@@ -41,7 +41,14 @@ body {
     background-color: var(--secondary-color);
 }
 
-.btn-tertiary {
+
+.btn-primary-outline {
     color: var(--accent-light-color);
-    background-color: var(--tertiary-color);
+    background-color: var(--primary-color);
+}
+
+
+.btn-secondary {
+    color: var(--accent-light-color);
+    background-color: var(--secondary-color);
 }
