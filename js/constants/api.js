@@ -11,6 +11,7 @@ export const API_URL_QUICK_TASK_INDEX = API_URL_BASE + "/quick_tasks/"
 export const API_URL_QUICK_TASK_CREATE = API_URL_BASE + "/quick_tasks/"
 export const API_URL_QUICK_TASK_SHOW = API_URL_BASE + "/quick_tasks/"
 export const API_URL_QUICK_TASK_UPDATE = API_URL_BASE + "/quick_tasks/"
+export const API_URL_QUICK_TASK_DELETE = API_URL_BASE + "/quick_tasks/"
 
 
 export const METHOD_GET = "GET"
