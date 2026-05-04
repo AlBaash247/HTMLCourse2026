@@ -6,15 +6,18 @@
     --accent-dark-color: #c9ada7;
     --accent-light-color: #f2e9e4;
 
+    --font-size: 1.1rem;
 
 }
 
 body {
+
     color: var(--primary-color);
     background-color: var(--accent-light-color);
 }
 
 .btn {
+    font-size: var(--font-size);
     width: fit-content;
     padding: 8px 16px;
     text-align: center;
@@ -52,3 +55,42 @@ body {
     color: var(--accent-light-color);
     background-color: var(--secondary-color);
 }
+
+.w-100 {
+    width: 100%;
+}
+
+a {
+    font-size: var(--font-size);
+    color: var(--primary-color);
+    
+}
+
+input {
+    font-size: var(--font-size);
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--accent-dark-color);
+    box-shadow: 4px 4px 8px 0 var(--accent-dark-color);
+}
+
+.auth-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth-form {
+    width: firt-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 0 auto;
+    padding: 64px;
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px 0 var(--accent-dark-color);
+}
+
