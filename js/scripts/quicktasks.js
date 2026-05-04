@@ -24,20 +24,10 @@ let btnUpdate = document.getElementById('btnUpdate')
 btnUpdate.onclick = function () {apiQuickTasksUpdate()}
 
 let btnDelete = document.getElementById('btnDelete')
-btnDelete.onclick = function () { deleteQuickTask() }
+btnDelete.onclick = function () { apiQuickTasksDelete() }
 
 let inputId = document.getElementById('inputId')
 let inputName = document.getElementById('inputName')
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -48,12 +38,10 @@ async function pingQuickTasks() {
 
 
 
-
 async function apiQuickTasksIndex() {
     let response = await fetchApiData(METHOD_GET, API_URL_QUICK_TASK_INDEX)
     response_area.innerText = JSON.stringify(response.data)
 }
-
 
 
 async function apiQuickTasksCreate() {
@@ -84,14 +72,8 @@ async function apiQuickTasksUpdate() {
     response_area.innerText = JSON.stringify(response.data)
 }
 
+
 async function apiQuickTasksDelete() {
-    let response = await fetchApiData(METHOD_POST, API_URL_QUICK_TASK_CREATE, data)
-    response_area.innerText = JSON.stringify(response.data)
-}
-
-
-
-async function deleteQuickTask() {
     let inputId = document.getElementById('inputId')
 
     let data = {
