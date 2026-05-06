@@ -34,6 +34,27 @@ body {
     justify-content: center;
 }
 
+.justify-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-baseline {
+    align-items: baseline;
+}
+
+
+.gap-8 {
+    gap: 8px;
+}
+
+.gap-16 {
+    gap: 16px;
+}
+
 .btn {
     font-size: var(--font-size);
     width: fit-content;
@@ -107,7 +128,7 @@ input {
     align-items: center;
     gap: 16px;
     margin: 0 auto;
-    padding: 64px;
+    padding: 80px;
     border-radius: 8px;
     box-shadow: 4px 4px 8px 0 var(--accent-dark-color);
 }

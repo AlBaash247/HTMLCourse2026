@@ -9,26 +9,9 @@ import {
 
 let test = document.getElementById('test')
 let btnLogin = document.getElementById('btnLogin')
-let btnRegister = document.getElementById('btnRegister')
+
 
 btnLogin.onclick = function () { login() }
-
-
-btnRegister.onclick = function () {
-
-    let inputName = document.getElementById('inputName')
-    let inputEmail = document.getElementById('inputEmail')
-    let inputPassword = document.getElementById('inputPassword')
-
-    let data = {
-        name: inputName.value,
-        email: inputEmail.value,
-        password: inputPassword.value,
-        c_password: inputPassword.value,
-    }
-
-    apiRegister(response_area, data)
-}
 
 
 async function login() {
