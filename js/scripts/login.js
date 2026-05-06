@@ -44,8 +44,6 @@ async function login() {
     let response = await fetchApiData(METHOD_POST, API_URL_AUTH_LOGIN, data)
     if (response.success) {
        window.open("../../index.html", "_self");
-
-
     }
 
 }

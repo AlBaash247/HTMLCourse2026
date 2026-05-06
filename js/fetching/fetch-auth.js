@@ -6,8 +6,4 @@
 }
 
 
-
- export async function apiRegister(element, data) {
-  let response =  await fetchApiData(METHOD_POST, API_URL_AUTH_REGISTER, data)
-  element.innerText = JSON.stringify(response.data)
-}
+\

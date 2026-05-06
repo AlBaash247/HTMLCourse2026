@@ -16,6 +16,24 @@ body {
     background-color: var(--accent-light-color);
 }
 
+.text-center {
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
 .btn {
     font-size: var(--font-size);
     width: fit-content;
