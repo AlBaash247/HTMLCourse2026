@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+
+        }
+
+        .nav-container {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 24px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px #c3c3c3;
+        }
+
+        .nav-link {
+            padding: 8px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 4px 8px #c3c3c3;
+        }
+
+        .nav-link:hover {
+            scale: 1.1;
+            border-radius: 8px 10px 10px 10px;
+
+            border-right: 1px solid #cfe5fd;
+            border-bottom: 1px solid #cfe5fd;
+            box-shadow: 0 8px 12px #e2f0ff, 0 4px 8px #f1f0f0;
+
+        }
+
+
+        /* Extra small devices (phones, 600px and down) */
+        @media only screen and (max-width: 600px) {
+            body {
+                background-color: red;
+            }
+
+            .nav-link{
+                font-size: 10px;
+            }
+        }
+
+        /* Small devices (portrait tablets and large phones, 600px and up) */
+        @media only screen and (min-width: 600px) {
+            body {
+                background-color: orange;
+            }
+
+
+            .nav-link{
+                font-size: 10px;
+            }
+        }
+
+        /* Medium devices (landscape tablets, 768px and up) */
+        @media only screen and (min-width: 768px) {
+            body {
+                background-color: yellowgreen;
+            }
+
+
+            .nav-link{
+                font-size: 16px;
+            }
+        }
+
+        /* Large devices (laptops/desktops, 992px and up) */
+        @media only screen and (min-width: 992px) {
+            body {
+                background-color: lightblue;
+            }
+        }
+
+        /* Extra large devices (large laptops and desktops, 1200px and up) */
+        @media only screen and (min-width: 1200px) {
+            body {
+                background-color: gray;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="nav-container">
+        <a href="" class="nav-link">link 1</a>
+        <a href="" class="nav-link">link 2</a>
+        <a href="" class="nav-link">link 3</a>
+        <a href="" class="nav-link">link 4</a>
+        <a href="" class="nav-link">link 4</a>
+
+    </div>
+
+
+</body>
+
+</html>
