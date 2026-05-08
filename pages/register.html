@@ -11,27 +11,29 @@
 
 <body>
 
-    <div class="auth-form-container">
+    <div class="main-container">
+        <div id="navContainer" class="nav-container"></div>
 
 
-        <div id="test"></div>
+        <div class="auth-form-container">
 
+            <div class="auth-form">
+                <div class="column justify-center">
+                    <h2 class="text-center">Register</h2>
+                    <p class="text-center"> Create a new account</p>
+                </div>
+                <input id="inputName" type="name" placeholder="yousuf" value="yousuf" />
+                <input id="inputEmail" type="email" placeholder="email" value="testuser5@mail.com" />
+                <input id="inputPassword" type="password" placeholder="password" value="Pass@123" />
 
-        <div class="auth-form">
-            <div class="column justify-center">
-                <h2 class="text-center">Register</h2>
-                <p class="text-center"> Create a new account</p>
-            </div>
-            <input id="inputName" type="name" placeholder="yousuf" value="yousuf" />
-            <input id="inputEmail" type="email" placeholder="email" value="testuser1@mail.com" />
-            <input id="inputPassword" type="password" placeholder="password" value="Pass@123" />
+                <br>
 
-            <br>
+                <button id="btnRegister" class="btn w-100 btn-primary">REGISTER</button>
+                <div class="row justify-between align-baseline gap-8">
+                    <p>You already have an account?</p>
+                    <a href="./login.html">Login</a>
+                </div>
 
-            <button id="btnRegister" class="btn w-100 btn-primary">REGISTER</button>
-            <div class="row justify-between align-baseline gap-8">
-                <p>You already have an account?</p>
-                <a href="./login.html">Login</a>
             </div>
 
         </div>
@@ -40,6 +42,8 @@
 
 
     <script type="module" src="../js/scripts/register.js"></script>
+    <script type="module" src="../js/templates/nav-bar.js"></script>
+
 </body>
 
 </html>

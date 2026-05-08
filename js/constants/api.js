@@ -74,12 +74,12 @@ function storeToken(token) {
     localStorage.setItem("STORE_KEY_TOKEN", token);
 }
 
-function getToken() {
+export function getToken() {
     // return '2|TFWTG71L9dZFjvNBW55kFwl147RK0LborGJDXSG8a28fdc06'
     let token = localStorage.getItem("STORE_KEY_TOKEN");
 
     if (token == null || token == '') {
-        alert('No token availble, try to login or register! ')
+        console.log('No token availble, try to login or register! ')
     }
 
     return token

@@ -11,35 +11,38 @@
 
 <body>
 
-    <div class="auth-form-container">
+    <div class="main-container">
+        <div id="navContainer" class="nav-container"></div>
+       
+        <div class="auth-form-container">
 
 
-        <div id="test"></div>
+            <div class="auth-form">
+                <div class="column justify-center">
+                    <h2 class="text-center">Login</h2>
+                    <p class="text-center"> Sign in to your account</p>
+                </div>
+                <input id="inputEmail" type="email" placeholder="email" value="testuser1@mail.com" />
+                <input id="inputPassword" type="password" placeholder="password" value="Pass@123" />
 
+                <br>
 
-        <div class="auth-form">
-            <div class="column justify-center">
-                <h2 class="text-center">Login</h2>
-                <p class="text-center"> Sign in to your account</p>
-            </div>
-            <input id="inputEmail" type="email" placeholder="email" value="testtuser1@mail.com" />
-            <input id="inputPassword" type="password" placeholder="password" value="Pass@123" />
+                <button id="btnLogin" class="btn w-100 btn-primary">LOGIN</button>
 
-            <br>
+                <div class="row justify-between align-baseline gap-8">
+                    <p>You don't have an account?</p>
+                    <a href="./register.html">Register</a>
+                </div>
 
-            <button id="btnLogin" class="btn w-100 btn-primary">LOGIN</button>
-
-            <div class="row justify-between align-baseline gap-8">
-                <p>You don't have an account?</p>
-                <a href="./register.html">Register</a>
             </div>
 
         </div>
 
     </div>
 
-
+     
     <script type="module" src="../js/scripts/login.js"></script>
+    <script type="module" src="../js/templates/nav-bar.js"></script>
 </body>
 
 </html>

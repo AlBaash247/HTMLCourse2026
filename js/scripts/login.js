@@ -1,16 +1,10 @@
-
-
 import {
     METHOD_GET, METHOD_POST, API_URL_AUTH_PING, API_URL_AUTH_REGISTER
     , fetchApiData, API_URL_AUTH_LOGIN
 } from '../constants/api.js'
 
 
-
-let test = document.getElementById('test')
 let btnLogin = document.getElementById('btnLogin')
-
-
 btnLogin.onclick = function () { login() }
 
 

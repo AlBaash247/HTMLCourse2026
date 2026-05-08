@@ -6,18 +6,11 @@ import {
 } from '../constants/api.js'
 
 
-
-let test = document.getElementById('test')
 let btnRegister = document.getElementById('btnRegister')
-
-
-
-
 btnRegister.onclick = function () {register()}
 
 
 async function register() {
-
     let inputName = document.getElementById('inputName')
     let inputEmail = document.getElementById('inputEmail')
     let inputPassword = document.getElementById('inputPassword')
