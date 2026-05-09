@@ -1,27 +1,31 @@
 :root {
 
-    --primary-color: #22223b;
-    --secondary-color: #4a4e69;
-    --tertiary-color: #9a8c98;
-    --accent-dark-color: #c9ada7;
-    --accent-light-color: #f2e9e4;
+    --primary-color: #1D70A2;
+    --secondary-color: #6DAEDB;
+    --tertiary-color: #CB8589;
+    --accent-dark-color: #191308;
+    --accent-dark-color-alpha: #19130844;
+    --accent-light-color: #FFFAFF;
 
-    --font-size: 1.1rem;
+    --font-size: 1.2rem;
 
     --border-radius: 8px;
-    --box-shadow: 4px 4px 8px 0 var(--accent-dark-color);
+    --box-shadow: 0 4px 16px 0 var(--accent-dark-color-alpha);
 
 }
 
 body {
-
+    margin: 0;
     color: var(--primary-color);
-    background-color: var(--accent-light-color);
+    background: #FFFAFF;
+    background: #FFFAFF;
+    background: #FFFAFF;
+    background: #FFFAFF;
+    background: linear-gradient(180deg, rgba(255, 250, 255, 1) 0%, rgba(109, 174, 219, 0.26) 50%, rgba(29, 112, 162, 0.15) 100%);
+
 }
 
-.w-100 {
-
-}
+.w-100 {}
 
 
 .text-center {
@@ -64,86 +68,139 @@ body {
 }
 
 .main-container {
-
-}
-
-.nav-container {
-
-}
-
-
-.nav-link {
-
-
-}
-
-.nav-link:hover {
-
-}
-
-
-.btn {
-
-
-}
-
-.btn:hover {
-
-}
-
-.btn-primary {
-
-}
-
-
-.btn-secondary {
-
-}
-
-
-.btn-primary-outline {
-
-}
-
-
-.btn-secondary {
-
-}
-
-
-a {
-
-
-}
-
-input {
-
-}
-
-.auth-form-container {
-
-}
-
-.auth-form {
-
-}
-
-
-
-.task-card-main-container{
-    height: 100%;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
     width: 100%;
 }
 
-.task-card-container{
+.nav-container {
+    padding: 8px 24px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--accent-light-color);
+    box-shadow: var(--box-shadow);
+}
 
+.nav-content-container {
+    width: fit-content;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 16px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--accent-dark-color);
+    font-size: var(--font-size);
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+
+.btn {}
+
+.btn:hover {}
+
+.btn-primary {}
+
+
+.btn-secondary {}
+
+
+.btn-primary-outline {}
+
+
+.btn-secondary {}
+
+
+a {}
+
+input {}
+
+.auth-form-container {}
+
+.auth-form {}
+
+
+
+.task-card-main-container {
+    height: 100vh;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding: 100px 16px;
+    gap: 16px;
 
 }
 
-.task-card-header{
-
+.task-card-container {
+    flex: 1;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: var(--accent-light-color);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    /* border-right: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-color); */
 }
 
-.task-card{
+.task-card-header {
+    color: var(--accent-light-color);
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    padding: 8px 24px;
+}
 
+
+.task-card-container:nth-child(1) .task-card-header {
+    background-color: var(--primary-color);
+}
+
+.task-card-container:nth-child(2) .task-card-header {
+    background-color: var(--tertiary-color);
+}
+
+.task-card-container:nth-child(3) .task-card-header {
+    background-color: var(--secondary-color);
+}
+
+.task-card-container:nth-child(4) .task-card-header {
+    color: var(--accent-dark-color);
+    background-color: var(--accent-light-color);
+    border-bottom: 1px solid var(--accent-dark-color-alpha);
+}
+
+.task-card-container:nth-child(5) .task-card-header {
+    background-color: var(--accent-dark-color);
+}
+
+.task-card-content-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+}
+
+.task-card {
+    min-height: 100px;
+    border-radius: var(--border-radius);
+    padding: 8px 16px;
+    border: 1px solid var(--accent-dark-color-alpha);
+}
+
+.task-card-title {
+    color: var(--accent-dark-color);
+    text-decoration: underline;
+}
+
+.task-card-content {
+    color: var(--accent-dark-color);
 }
