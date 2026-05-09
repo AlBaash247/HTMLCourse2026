@@ -19,6 +19,11 @@ body {
     background-color: var(--accent-light-color);
 }
 
+.w-100 {
+
+}
+
+
 .text-center {
     text-align: center;
 }
@@ -59,118 +64,86 @@ body {
 }
 
 .main-container {
-    width: 1200px;
-    display: flex;
-    flex-flow: row wrap;
-    justify-self: center;
-    justify-content: center;
-    margin-top: 32px;
-    /* background-color: #22223b; */
+
 }
 
 .nav-container {
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    padding: 16px 64px;
-    border-radius: var(--border-radius);
-    background-color: var(--primary-color);
-    box-shadow: var(--box-shadow);
+
 }
 
 
 .nav-link {
-    text-decoration: none;
-    font-size: var(--font-size);
-    width: fit-content;
-    padding: 8px 16px;
-    text-align: center;
-    cursor: pointer;
-    border-radius: var(--border-radius);
-    background-color: var(--accent-light-color);
+
 
 }
 
 .nav-link:hover {
-    scale: 1.02;
+
 }
 
 
 .btn {
-    font-size: var(--font-size);
-    width: fit-content;
-    padding: 8px 16px;
-    text-align: center;
-    cursor: pointer;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+
 
 }
 
 .btn:hover {
-    scale: 1.1;
-    box-shadow: 8px 8px 12px 0 var(--accent-dark-color);
 
 }
 
 .btn-primary {
-    color: var(--accent-light-color);
-    background-color: var(--primary-color);
+
 }
 
 
 .btn-secondary {
-    color: var(--accent-light-color);
-    background-color: var(--secondary-color);
+
 }
 
 
 .btn-primary-outline {
-    color: var(--accent-light-color);
-    background-color: var(--primary-color);
+
 }
 
 
 .btn-secondary {
-    color: var(--accent-light-color);
-    background-color: var(--secondary-color);
+
 }
 
-.w-100 {
-    width: 100%;
-}
 
 a {
-    font-size: var(--font-size);
-    color: var(--primary-color);
+
 
 }
 
 input {
-    font-size: var(--font-size);
-    padding: 8px 16px;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--accent-dark-color);
-    box-shadow: var(--box-shadow);
+
 }
 
 .auth-form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+
 }
 
 .auth-form {
-    width: firt-content;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    margin: 0 auto;
-    padding: 80px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+
+}
+
+
+
+.task-card-main-container{
+    height: 100%;
+    width: 100%;
+}
+
+.task-card-container{
+
+
+}
+
+.task-card-header{
+
+}
+
+.task-card{
+
 }
