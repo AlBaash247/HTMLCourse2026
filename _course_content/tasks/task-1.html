@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        :root {
+            --primary-color: #cdb4db;
+            --secondary-color: #ffc8dd;
+            --tertiary-color: #ffafcc;
+            --accent-light-color: #bde0fe;
+            --accent-dark-color: #a2d2ff;
+
+            --light-text-color: #ffffff;
+            --dark-text-color: #000000;
+
+            --font-size: 1.33rem;
+            --border-radius: 50px;
+        }
+
+
+
+        body {
+            font-family: Arial, sans-serif;
+            font-size: var(--font-size);
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .text-light {
+            color: var(--light-text-color);
+        }
+
+        .text-dark {
+            color: var(--dark-text-color);
+        }
+
+
+        .text-primary {
+            color: var(--primary-color);
+        }
+
+        .text-secondary {
+            color: var(--secondary-color);
+        }
+
+        .text-tertiary {
+            color: var(--tertiary-color);
+        }
+
+        .text-accent-light {
+            color: var(--accent-light-color);
+        }
+
+        .text-accent-dark {
+            color: var(--accent-dark-color);
+        }
+
+
+
+        .bg-primary {
+            background-color: var(--primary-color);
+        }
+
+        .bg-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .bg-tertiary {
+            background-color: var(--tertiary-color);
+        }
+
+        .bg-accent-light {
+            background-color: var(--accent-light-color);
+        }
+
+        .bg-accent-dark {
+            background-color: var(--accent-dark-color);
+        }
+
+
+        .pt-4 {
+            padding-top: 4rem;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .justify-between {
+            justify-content: space-around;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin: 0;
+        }
+
+
+        .item {
+            width: 300px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: var(--font-size);
+            font-weight: bold;
+            border-radius: var(--border-radius);
+        }
+
+        .btn {
+            width: 300px;
+            height: 50px;
+            border: none;
+            cursor: pointer;
+            font-size: var(--font-size);
+            font-weight: bold;
+            border-radius: var(--border-radius);
+        }
+
+        .link {
+            font-size: var(--font-size);
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .card {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img-container {
+            width: 100%;
+            height: 150px;
+        }
+
+        .card-img {
+            width: 100%;
+            height: auto;
+            border-top-left-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius);
+        }
+
+        .card-content {
+            padding: 16px;
+        }
+
+        .card-title {
+            margin: 0 0 8px;
+        }
+
+        .card-description {
+            margin: 0;
+            font-size: medium;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="main-container pt-4">
+
+
+        <div class="row justify-between">
+            <div class="item text-light bg-primary"> div Primary</div>
+            <div class="item text-light bg-secondary"> div Secondary</div>
+            <div class="item text-light bg-tertiary"> div Tertiary</div>
+            <div class="item text-dark bg-accent-light"> div Accent Light</div>
+            <div class="item text-light bg-accent-dark"> div Accent Dark</div>
+        </div>
+
+
+        <div class="row justify-between">
+            <button class="btn text-light bg-primary">Button Primary</button>
+            <button class="btn text-light bg-secondary">Button Secondary</button>
+            <button class="btn text-light bg-tertiary">Button Tertiary</button>
+            <button class="btn text-dark bg-accent-light">Button Accent Light</button>
+            <button class="btn text-light bg-accent-dark">Button Accent Dark</button>
+        </div>
+
+
+        <div class="row justify-between">
+            <a href="" class="link text-primary">Link Primary</a>
+            <a href="" class="link text-secondary">Link Secondary</a>
+            <a href="" class="link text-tertiary">Link Tertiary</a>
+            <a href="" class="link text-accent-light">Link Accent Light</a>
+            <a href="" class="link text-accent-dark">Link Accent Dark</a>
+        </div>
+
+
+        <div class="row justify-between">
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img class="card-img" src="https://picsum.photos/seed/picsum/300/150" alt="Card Image">
+                </div>
+                <div class="card-content bg-primary">
+                    <h3 class="card-title text-light">Card Title</h3>
+                    <p class="card-description text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Voluptas,
+                        doloremque.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img class="card-img" src="https://picsum.photos/seed/picsum/300/150" alt="Card Image">
+                </div>
+                <div class="card-content bg-secondary">
+                    <h3 class="card-title text-light">Card Title</h3>
+                    <p class="card-description text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Voluptas,
+                        doloremque.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img class="card-img" src="https://picsum.photos/seed/picsum/300/150" alt="Card Image">
+                </div>
+                <div class="card-content bg-tertiary">
+                    <h3 class="card-title text-light">Card Title</h3>
+                    <p class="card-description text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Voluptas,
+                        doloremque.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img class="card-img" src="https://picsum.photos/seed/picsum/300/150" alt="Card Image">
+                </div>
+                <div class="card-content bg-accent-light">
+                    <h3 class="card-title text-dark">Card Title</h3>
+                    <p class="card-description text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Voluptas,
+                        doloremque.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img class="card-img" src="https://picsum.photos/seed/picsum/300/150" alt="Card Image">
+                </div>
+                <div class="card-content bg-accent-dark">
+                    <h3 class="card-title text-light">Card Title</h3>
+                    <p class="card-description text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Voluptas,
+                        doloremque.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
