@@ -13,6 +13,11 @@ export const API_URL_QUICK_TASK_SHOW = API_URL_BASE + "/quick_tasks/"
 export const API_URL_QUICK_TASK_UPDATE = API_URL_BASE + "/quick_tasks/"
 export const API_URL_QUICK_TASK_DELETE = API_URL_BASE + "/quick_tasks/"
 
+export const API_URL_TASK_CATEGORY_PING = API_URL_BASE + "/task_categories/ping"
+export const API_URL_TASK_CATEGORY_INDEX = API_URL_BASE + "/task_categories/"
+
+
+
 
 export const METHOD_GET = "GET"
 export const METHOD_POST = "POST"
@@ -79,7 +84,7 @@ export function getToken() {
     let token = localStorage.getItem("STORE_KEY_TOKEN");
 
     if (token == null || token == '') {
-        console.log('No token availble, try to login or register! ')
+        console.log('No token available, try to login or register! ')
     }
 
     return token

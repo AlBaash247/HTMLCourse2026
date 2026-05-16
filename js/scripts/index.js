@@ -1,45 +1,161 @@
-import {pingAuth, apiLogin, apiRegister} from '../fetching/fetch-auth.js'
-import {pingQuickTasks} from '../fetching/fetch-quicktasks.js'
-
-let response_area = document.getElementById('response_area')
-let response_area2 = document.getElementById('response_area2')
-let btnPingAuth = document.getElementById('btnPingAuth')
-let btnPingQuickTasks = document.getElementById('btnPingQuickTasks')
-
-let btnLogin = document.getElementById('btnLogin')
-let btnRegister = document.getElementById('btnRegister')
-
-btnPingAuth.onclick = function(){pingAuth(response_area)}
-btnPingQuickTasks.onclick = function(){pingQuickTasks(response_area2)}
-
-btnLogin.onclick = function(){
+import {
+    getToken, fetchApiData,
+    METHOD_GET, METHOD_POST, METHOD_PUT, METHOD_UPDATE, METHOD_DELETE,
+    API_URL_QUICK_TASK_PING, API_URL_QUICK_TASK_INDEX,
+    API_URL_QUICK_TASK_CREATE, API_URL_QUICK_TASK_SHOW,
+    API_URL_QUICK_TASK_UPDATE, API_URL_QUICK_TASK_DELETE,
+    API_URL_TASK_CATEGORY_PING, API_URL_TASK_CATEGORY_INDEX
+} from '../constants/api.js'
 
 
-    let inputEmail = document.getElementById('inputEmail')
-    let inputPassword = document.getElementById('inputPassword')
+let taskCategories = []
 
-    let data = {
-        email : inputEmail.value,
-        password : inputPassword.value,
+let mainTasksColumnsContainer = document.getElementById('mainTasksColumnsContainer')
+
+// this template will go in -> mainTasksColumnsContainer
+let taskColumnContainerTemplate = document.getElementById('taskColumnContainerTemplate')
+// this template will go in -> taskColumnCardsContainer
+let taskCardTemplate = document.getElementById('taskCardTemplate')
+
+
+// Get the modal
+var showTaskModal = document.getElementById("showTaskModal");
+var modalTitle = document.getElementById("modalTitle");
+var modalDesc = document.getElementById("modalDesc");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    showTaskModal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        showTaskModal.style.display = "none";
     }
-
-    apiLogin(response_area, data)
 }
 
 
-btnRegister.onclick = function(){
-
-    let inputName = document.getElementById('inputName')
-    let inputEmail = document.getElementById('inputEmail')
-    let inputPassword = document.getElementById('inputPassword')
-
-    let data = {
-        name : inputName.value,
-        email : inputEmail.value,
-        password : inputPassword.value,
-        c_password : inputPassword.value,
-    }
-
-    apiRegister(response_area, data)
+if (getToken()) {
+    fetchTaskCategories()
 }
 
+
+async function fetchTaskCategories() {
+
+    let response = await fetchApiData(METHOD_GET, API_URL_TASK_CATEGORY_INDEX, null)
+
+    if (response.success) {
+        // mainTasksColumnsContainer.innerText = JSON.stringify(response)
+        taskCategories = response.data
+        fetchQuickTasks()
+    }
+
+}
+
+
+
+async function fetchQuickTasks() {
+
+    let response = await fetchApiData(METHOD_GET, API_URL_QUICK_TASK_INDEX, null)
+
+    if (response.success) {
+        adapter(response.data)
+    }
+
+}
+
+function adapter(tasks) {
+
+    taskCategories.forEach(category => {
+
+        const columnContainerClone = taskColumnContainerTemplate.content.cloneNode(true)
+        const taskColumn = columnContainerClone.getElementById("taskColumn")
+        const taskColumnTitle = columnContainerClone.getElementById("taskColumnTitle")
+        const taskColumnCardsContainer = columnContainerClone.getElementById("taskColumnCardsContainer")
+        const filteredTasks = tasks.filter(task => task.task_category_id === category.id);
+
+        taskColumn.key = category.id
+        taskColumn.dataset.category_id = category.id
+        taskColumnTitle.innerText = category.name
+
+
+        filteredTasks.forEach(task => {
+            const taskCardClone = taskCardTemplate.content.cloneNode(true)
+            const taskCard = taskCardClone.getElementById("taskCard")
+            const taskCardTitle = taskCardClone.getElementById("taskCardTitle")
+            const taskCardDesc = taskCardClone.getElementById("taskCardDesc")
+
+            taskCard.key = task.id
+            taskCard.dataset.task_id = task.id
+            taskCardTitle.innerText = task.name.slice(0, 10)
+            taskCardDesc.innerText = task.name
+
+
+            taskCard.onclick = () => {
+                 modalTitle.innerText = task.name.slice(0, 10)
+                 modalDesc.innerText = task.name
+                 showTaskModal.style.display = "block";
+
+
+            }
+
+
+            taskColumnCardsContainer.appendChild(taskCardClone)
+
+        });
+
+
+        if (category.name != 'Archive') {
+            mainTasksColumnsContainer.appendChild(columnContainerClone);
+        }
+
+    });
+
+}
+
+
+
+
+
+/** ================ TaskCategories Response
+ {
+    "success":true,
+    "data":[
+            {
+                "id":1,
+                "name":"Log",
+                "date_created":"2026-05-08 20:23:43",
+                "date_updated":"2026-05-08 20:23:43"
+                }
+            ],
+    "message":"Task categories retrieved successfully."
+    }
+ */
+
+
+
+/** ================ QuickTasks Response
+ 
+{ 
+    "success": true, 
+    "data": 
+    [
+        { 
+            "id": 2,
+             "user_id": 1,
+             "name": "1 My First Task",
+             "done": 1,
+             "task_category_id": 2,
+             "task_category_name": "Todo",
+             "created_at": "2026-05-01T17:09:40.000000Z",
+             "updated_at": "2026-05-15T20:27:53.000000Z" },
+    ], 
+    "message": "Quick Tasks retrieved successfully." 
+}
+
+*/

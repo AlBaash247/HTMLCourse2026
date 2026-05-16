@@ -1,35 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+import { getToken } from '../constants/api.js'
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-    <link rel="stylesheet" href="./css/main.css">
-
-</head>
-
-<body>
-    <div class="main-container column">
-
-        <div class="nav-container">
-            <div class="nav-content-container">
-                <h1>Kite</h1>
-            </div>
-
-            <div id="navLinksContainer" class="nav-content-container">
-            </div>
-
-            <div id="navAuthLinksContainer" class="nav-content-container">
-            </div>
-
-        </div>
-
-
-
-        <div id="mainTasksColumnsContainer" class="task-card-main-container">
-            <!-- 
-            <div class="column task-card-container">
+let demoTasks = `    
+        <div class="column task-card-container">
                 <div class="task-card-header">
                     <h2>Log</h2>
                 </div>
@@ -108,62 +80,12 @@
                     </div>
                 </div>
 
-            </div> -->
-
-        </div>
-
-
-    </div>
-
-
-    <!-- The Modal -->
-    <div id="showTaskModal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="close">&times;</span>
-                <h2 id="modalTitle" >Modal Header</h2>
             </div>
-            <div class="modal-body">
-                <p id="modalDesc">Some text in the Modal Body</p>
-            </div>
-            <!-- <div class="modal-footer">
-                <h3>Modal Footer</h3>
-            </div> -->
-        </div>
-
-    </div>
+`
 
 
+let mainColumnTasksContainer = document.getElementById("mainColumnTasksContainer");
 
-    <template id="taskColumnContainerTemplate">
-
-        <div id="taskColumn" class="column task-card-container">
-            <div class="task-card-header">
-                <h2 id="taskColumnTitle">Log</h2>
-            </div>
-
-            <div id="taskColumnCardsContainer" class="task-card-content-container">
-                <!-- card-here -->
-            </div>
-
-        </div>
-    </template>
-
-    <template id="taskCardTemplate">
-        <div id="taskCard" class="task-card">
-            <h4 id="taskCardTitle" class="task-card-title">Task 1</h4>
-            <p id="taskCardDesc" class="task-card-content">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Asperiores vel, at dignissimos odit enim distinctio quasi.</p>
-        </div>
-    </template>
-
-
-
-    <script type="module" src="./js/templates/nav-bar.js"></script>
-    <script type="module" src="./js/templates/demo-tasks.js"></script>
-    <script type="module" src="./js/scripts/index.js"></script>
-</body>
-
-</html>
+if (getToken() === null) {
+    mainColumnTasksContainer.innerHTML = demoTasks;
+}
