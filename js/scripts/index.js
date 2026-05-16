@@ -10,7 +10,11 @@ import {
 
 let taskCategories = []
 
-let mainTasksColumnsContainer = document.getElementById('mainTasksColumnsContainer')
+const mainTasksColumnsContainer = document.getElementById('mainTasksColumnsContainer')
+const modalHeader = document.getElementById("modalHeader")
+const modalClose = document.getElementById("modalClose")
+
+
 
 // this template will go in -> mainTasksColumnsContainer
 let taskColumnContainerTemplate = document.getElementById('taskColumnContainerTemplate')
@@ -97,10 +101,47 @@ function adapter(tasks) {
 
 
             taskCard.onclick = () => {
-                 modalTitle.innerText = task.name.slice(0, 10)
-                 modalDesc.innerText = task.name
-                 showTaskModal.style.display = "block";
+                modalTitle.innerText = task.name.slice(0, 10)
+                modalDesc.innerText = task.name
+                showTaskModal.style.display = "block";
 
+                modalHeader.classList.remove(...modalHeader.classList);
+                modalTitle.classList.remove(...modalTitle.classList);
+                modalClose.classList.remove(...modalClose.classList);
+
+                switch (category.name) {
+                    case 'Log':
+                        modalTitle.classList.add('text-accent-light')
+                        modalClose.classList.add('text-accent-light', 'close')
+                        modalHeader.classList.add('modal-header', 'bg-primary')
+                        break
+                    case 'Todo':
+                        modalTitle.classList.add('text-accent-light')
+                        modalClose.classList.add('text-accent-light', 'close')
+                        modalHeader.classList.add('modal-header', 'bg-tertiary')
+                        break
+                    case 'In Progress':
+                        modalTitle.classList.add('text-accent-light')
+                        modalClose.classList.add('text-accent-light', 'close')
+                        modalHeader.classList.add('modal-header', 'bg-secondary')
+                        break
+
+                    case 'Review':
+
+                        modalTitle.classList.add('text-accent-dark')
+                        modalClose.classList.add('text-accent-dark', 'close')
+                        modalHeader.classList.add('modal-header', 'bg-accent-light', 'border-bottom-accent-dark')
+                        break
+
+                    case 'Done':
+                        modalTitle.classList.add('text-accent-light')
+                        modalClose.classList.add('text-accent-light', 'close')
+                        modalHeader.classList.add('modal-header', 'bg-accent-dark')
+                        break
+
+                    default:
+                        modalHeader.classList.add('modal-header', 'bg-primary')
+                }
 
             }
 

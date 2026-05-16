@@ -22,6 +22,24 @@ body {
 
 }
 
+
+.text-primary{
+    color: var(--primary-color);
+}
+.text-secondary{
+    color: var(--secondary-color);
+}
+.text-tertiary{
+    color: var(--tertiary-color);
+}
+.text-accent-dark{
+    color: var(--accent-dark-color);
+}
+.text-accent-light{
+    color: var(--accent-light-color);
+}
+
+
 .bg-primary{
     background-color: var(--primary-color);
 }
@@ -38,7 +56,9 @@ body {
     background-color: var(--accent-light-color);
 }
 
-
+.border-bottom-accent-dark {
+    border-bottom: 1px solid var(--accent-dark-color-alpha);
+}
 
 .w-100 {}
 
@@ -167,6 +187,10 @@ input {}
 }
 
 .task-card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     color: var(--accent-light-color);
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
@@ -242,7 +266,7 @@ input {}
 /* Modal Content */
 .modal-content {
   position: relative;
-  background-color: #fefefe;
+  background-color: var(--accent-light-color);
   margin: auto;
   padding: 0;
   border: 1px solid #888;
@@ -267,7 +291,6 @@ input {}
 
 /* The Close Button */
 .close {
-  color: white;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -275,14 +298,13 @@ input {}
 
 .close:hover,
 .close:focus {
-  color: #000;
   text-decoration: none;
   cursor: pointer;
+  scale: 1.02;
 }
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
   color: white;
 }
 
