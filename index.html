@@ -49,7 +49,7 @@
                 <h2 id="showTaskModalTitle" >Modal Header</h2>
             </div>
             <div class="modal-body">
-                <p id="showTaskModalDesc">Some text in the Modal Body</p>
+                <p id="showTaskModalDesc">Some text in the Modal Body show</p>
             </div>
             <!-- <div class="modal-footer">
                 <h3>Modal Footer</h3>
@@ -67,10 +67,23 @@
         <div class="modal-content">
             <div id="addTaskModalHeader" class="modal-header">
                 <span id="addTaskModalClose" class="close">&times;</span>
-                <h2 id="addTaskModalTitle" >Modal Header</h2>
+                <h2 id="addTaskModalTitle">Modal Header</h2>
             </div>
             <div class="modal-body">
-                <p id="addTaskModalDesc">Some text in the Modal Body</p>
+                <p id="addTaskModalDesc">Fill in task details below.</p>
+                <form id="addTaskForm" class="modal-form">
+                    <label for="inputTaskNameShowModal">Task Name <span class="required">*</span></label>
+                    <input id="inputTaskNameShowModal" type="text" placeholder="Enter task name" required>
+
+                    <label for="inputTaskDescShowModal">Description</label>
+                    <textarea id="inputTaskDescShowModal" placeholder="Optional description"></textarea>
+
+                    <input id="inputTaskCategoryShowModal" type="hidden" value="">
+
+                    <div class="modal-actions">
+                        <button id="addTaskSubmit" type="button" class="button">Add Task</button>
+                    </div>
+                </form>
             </div>
             <!-- <div class="modal-footer">
                 <h3>Modal Footer</h3>

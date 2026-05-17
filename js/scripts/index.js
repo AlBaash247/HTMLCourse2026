@@ -16,25 +16,33 @@ const showTaskModalHeader = document.getElementById("showTaskModalHeader")
 
 
 // this template will go in -> mainTasksColumnsContainer
-let taskColumnContainerTemplate = document.getElementById('taskColumnContainerTemplate')
+const taskColumnContainerTemplate = document.getElementById('taskColumnContainerTemplate')
 // this template will go in -> taskColumnCardsContainer
-let taskCardTemplate = document.getElementById('taskCardTemplate')
+const taskCardTemplate = document.getElementById('taskCardTemplate')
 
+const showTaskModal = document.getElementById("showTaskModal");
 
 // Get the show modal
-var showTaskModal = document.getElementById("showTaskModal");
 const showTaskModalClose = document.getElementById("showTaskModalClose")
-var showTaskModalTitle = document.getElementById("showTaskModalTitle");
-var showTaskModalDesc = document.getElementById("showTaskModalDesc");
+const showTaskModalTitle = document.getElementById("showTaskModalTitle");
+const showTaskModalDesc = document.getElementById("showTaskModalDesc");
 
 
 // Get the add modal
-var addTaskModal = document.getElementById("addTaskModal");
+const addTaskModal = document.getElementById("addTaskModal");
 const addTaskModalClose = document.getElementById("addTaskModalClose")
+const addTaskModalHeader = document.getElementById("addTaskModalHeader")
+const addTaskSubmit = document.getElementById('addTaskSubmit')
 
-var addTaskModalTitle = document.getElementById("addTaskModalTitle");
-var addTaskModalDesc = document.getElementById("addTaskModalDesc");
-var closeShowModal = document.getElementsByClassName("close")[0];
+const addTaskModalTitle = document.getElementById("addTaskModalTitle");
+const addTaskModalDesc = document.getElementById("addTaskModalDesc");
+const closeShowModal = document.getElementsByClassName("close")[0];
+
+
+// inputs add task modal
+const inputTaskNameShowModal = document.getElementById('inputTaskNameShowModal')
+const inputTaskDescShowModal = document.getElementById('inputTaskDescShowModal')
+const inputTaskCategoryShowModal = document.getElementById('inputTaskCategoryShowModal')
 
 
 
@@ -44,19 +52,55 @@ showTaskModalClose.onclick = function () {
 }
 
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
+// When the user clicks anywhere outside of either modal, close it
+window.addEventListener('click', function (event) {
+    if (event.target == showTaskModal) {
         showTaskModal.style.display = "none";
     }
-}
+
+    if (event.target == addTaskModal) {
+        addTaskModal.style.display = "none";
+    }
+});
 
 addTaskModalClose.onclick = function () {
     addTaskModal.style.display = "none";
 }
 
+addTaskSubmit.onclick = function () {
+    fetchAddQuickTask()
+}
+
 if (getToken()) {
     fetchTaskCategories()
+}
+
+
+async function fetchAddQuickTask(){
+    const name = inputTaskNameShowModal.value.trim()
+    if (!name) {
+        alert('Task name is required.')
+        inputTaskNameShowModal.focus()
+        return
+    }
+
+    const data = {
+        name,
+        description: inputTaskDescShowModal.value.trim(),
+        task_category_id: Number(inputTaskCategoryShowModal.value)
+    }
+
+    const response = await fetchApiData(METHOD_POST, API_URL_QUICK_TASK_CREATE, data)
+
+    if (response.success) {
+        addTaskModal.style.display = 'none'
+        inputTaskNameShowModal.value = ''
+        inputTaskDescShowModal.value = ''
+        inputTaskCategoryShowModal.value = ''
+        fetchQuickTasks()
+    } else {
+        alert(response.message || 'Could not add task.')
+    }
 }
 
 
@@ -73,7 +117,6 @@ async function fetchTaskCategories() {
 }
 
 
-
 async function fetchQuickTasks() {
 
     let response = await fetchApiData(METHOD_GET, API_URL_QUICK_TASK_INDEX, null)
@@ -85,6 +128,8 @@ async function fetchQuickTasks() {
 }
 
 function columnsAdapter(tasks) {
+
+    mainTasksColumnsContainer.innerHTML = ''
 
     taskCategories.forEach(category => {
 
@@ -100,6 +145,10 @@ function columnsAdapter(tasks) {
 
         taskColumnAddTask.onclick = () => {
             addTaskModalTitle.innerText = `Add Task to ${category.name}`
+            addTaskModalDesc.innerText = `Add a new task to ${category.name}. Task name is required; description is optional.`
+            inputTaskCategoryShowModal.value = category.id
+            inputTaskNameShowModal.value = ''
+            inputTaskDescShowModal.value = ''
 
             addTaskModalHeader.classList.remove(...addTaskModalHeader.classList);
             addTaskModalTitle.classList.remove(...addTaskModalTitle.classList);
@@ -170,6 +219,7 @@ function cardsAdapter(category, tasks, taskColumnCardsContainer) {
 
 
         taskCard.onclick = () => {
+            // alert(`Task: ${task.name} \nCategory: ${category.name}`)
             showTaskModalTitle.innerText = task.name.slice(0, 10)
             showTaskModalDesc.innerText = task.name
 
@@ -211,9 +261,9 @@ function cardsAdapter(category, tasks, taskColumnCardsContainer) {
                     showTaskModalHeader.classList.add('modal-header', 'bg-primary')
             }
 
+            showTaskModal.style.display = "block";
         }
 
-        showTaskModal.style.display = "block";
 
         taskColumnCardsContainer.appendChild(taskCardClone)
 
