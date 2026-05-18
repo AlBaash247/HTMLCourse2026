@@ -60,28 +60,63 @@
 
         
 
-    <!-- Add Modal -->
-    <div id="addTaskModal" class="modal">
+    <!-- create Modal -->
+    <div id="createTaskModal" class="modal">
 
         <!-- Modal content -->
         <div class="modal-content">
-            <div id="addTaskModalHeader" class="modal-header">
-                <span id="addTaskModalClose" class="close">&times;</span>
-                <h2 id="addTaskModalTitle">Modal Header</h2>
+            <div id="createTaskModalHeader" class="modal-header">
+                <span id="createTaskModalClose" class="close">&times;</span>
+                <h2 id="createTaskModalTitle">Modal Header</h2>
             </div>
             <div class="modal-body">
-                <p id="addTaskModalDesc">Fill in task details below.</p>
-                <form id="addTaskForm" class="modal-form">
-                    <label for="inputTaskNameShowModal">Task Name <span class="required">*</span></label>
-                    <input id="inputTaskNameShowModal" type="text" placeholder="Enter task name" required>
+                <p id="createTaskModalDesc">Fill in task details below.</p>
+                <form id="createTaskModalForm" class="modal-form">
+                    <label for="createModalInputTaskName">Task Name <span class="required">*</span></label>
+                    <input id="createModalInputTaskName" type="text" placeholder="Enter task name" required>
 
-                    <label for="inputTaskDescShowModal">Description</label>
-                    <textarea id="inputTaskDescShowModal" placeholder="Optional description"></textarea>
+                    <label for="createModalInputTaskDesc">Description</label>
+                    <textarea id="createModalInputTaskDesc" placeholder="Optional description"></textarea>
 
-                    <input id="inputTaskCategoryShowModal" type="hidden" value="">
+                    <input id="createModalInputTaskCategory" type="hidden" value="">
 
                     <div class="modal-actions">
-                        <button id="addTaskSubmit" type="button" class="button">Add Task</button>
+                        <button id="createTaskModalSubmit" type="button" class="button">Create Task</button>
+                    </div>
+                </form>
+            </div>
+            <!-- <div class="modal-footer">
+                <h3>Modal Footer</h3>
+            </div> -->
+        </div>
+
+    </div>
+
+
+
+
+    <!-- update Modal -->
+    <div id="updateTaskModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div id="updateTaskModalHeader" class="modal-header">
+                <span id="updateTaskModalClose" class="close">&times;</span>
+                <h2 id="updateTaskModalTitle">Modal Header</h2>
+            </div>
+            <div class="modal-body">
+                <p id="updateTaskModalDesc">Fill in task details below.</p>
+                <form id="updateTaskForm" class="modal-form">
+                    <label for="updateModalInputTaskName">Task Name <span class="required">*</span></label>
+                    <input id="updateModalInputTaskName" type="text" placeholder="Enter task name" required>
+
+                    <label for="updateModalInputTaskDesc">Description</label>
+                    <textarea id="updateModalInputTaskDesc" placeholder="Optional description"></textarea>
+
+                    <input id="updateModalInputTaskCategory" type="hidden" value="">
+
+                    <div class="modal-actions">
+                        <button id="updateTaskSubmit" type="button" class="button">Update Task</button>
                     </div>
                 </form>
             </div>

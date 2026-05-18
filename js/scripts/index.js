@@ -29,20 +29,20 @@ const showTaskModalDesc = document.getElementById("showTaskModalDesc");
 
 
 // Get the add modal
-const addTaskModal = document.getElementById("addTaskModal");
-const addTaskModalClose = document.getElementById("addTaskModalClose")
-const addTaskModalHeader = document.getElementById("addTaskModalHeader")
-const addTaskSubmit = document.getElementById('addTaskSubmit')
+const createTaskModal = document.getElementById("createTaskModal");
+const createTaskModalClose = document.getElementById("createTaskModalClose")
+const createTaskModalHeader = document.getElementById("createTaskModalHeader")
+const createTaskModalSubmit = document.getElementById('createTaskModalSubmit')
 
-const addTaskModalTitle = document.getElementById("addTaskModalTitle");
-const addTaskModalDesc = document.getElementById("addTaskModalDesc");
+const createTaskModalTitle = document.getElementById("createTaskModalTitle");
+const createTaskModalDesc = document.getElementById("createTaskModalDesc");
 const closeShowModal = document.getElementsByClassName("close")[0];
 
 
 // inputs add task modal
-const inputTaskNameShowModal = document.getElementById('inputTaskNameShowModal')
-const inputTaskDescShowModal = document.getElementById('inputTaskDescShowModal')
-const inputTaskCategoryShowModal = document.getElementById('inputTaskCategoryShowModal')
+const createModalInputTaskName = document.getElementById('createModalInputTaskName')
+const createModalInputTaskDesc = document.getElementById('createModalInputTaskDesc')
+const createModalInputTaskCategory = document.getElementById('createModalInputTaskCategory')
 
 
 
@@ -52,22 +52,23 @@ showTaskModalClose.onclick = function () {
 }
 
 
+createTaskModalClose.onclick = function () {
+    createTaskModal.style.display = "none";
+}
+
 // When the user clicks anywhere outside of either modal, close it
 window.addEventListener('click', function (event) {
     if (event.target == showTaskModal) {
         showTaskModal.style.display = "none";
     }
 
-    if (event.target == addTaskModal) {
-        addTaskModal.style.display = "none";
+    if (event.target == createTaskModal) {
+        createTaskModal.style.display = "none";
     }
 });
 
-addTaskModalClose.onclick = function () {
-    addTaskModal.style.display = "none";
-}
 
-addTaskSubmit.onclick = function () {
+createTaskModalSubmit.onclick = function () {
     fetchAddQuickTask()
 }
 
@@ -77,26 +78,26 @@ if (getToken()) {
 
 
 async function fetchAddQuickTask(){
-    const name = inputTaskNameShowModal.value.trim()
+    const name = createModalInputTaskName.value.trim()
     if (!name) {
         alert('Task name is required.')
-        inputTaskNameShowModal.focus()
+        createModalInputTaskName.focus()
         return
     }
 
     const data = {
         name,
-        description: inputTaskDescShowModal.value.trim(),
-        task_category_id: Number(inputTaskCategoryShowModal.value)
+        description: createModalInputTaskDesc.value.trim(),
+        task_category_id: Number(createModalInputTaskCategory.value)
     }
 
     const response = await fetchApiData(METHOD_POST, API_URL_QUICK_TASK_CREATE, data)
 
     if (response.success) {
-        addTaskModal.style.display = 'none'
-        inputTaskNameShowModal.value = ''
-        inputTaskDescShowModal.value = ''
-        inputTaskCategoryShowModal.value = ''
+        createTaskModal.style.display = 'none'
+        createModalInputTaskName.value = ''
+        createModalInputTaskDesc.value = ''
+        createModalInputTaskCategory.value = ''
         fetchQuickTasks()
     } else {
         alert(response.message || 'Could not add task.')
@@ -144,52 +145,52 @@ function columnsAdapter(tasks) {
         taskColumnTitle.innerText = category.name
 
         taskColumnAddTask.onclick = () => {
-            addTaskModalTitle.innerText = `Add Task to ${category.name}`
-            addTaskModalDesc.innerText = `Add a new task to ${category.name}. Task name is required; description is optional.`
-            inputTaskCategoryShowModal.value = category.id
-            inputTaskNameShowModal.value = ''
-            inputTaskDescShowModal.value = ''
+            createTaskModalTitle.innerText = `Add Task to ${category.name}`
+            createTaskModalDesc.innerText = `Add a new task to ${category.name}. Task name is required; description is optional.`
+            createModalInputTaskCategory.value = category.id
+            createModalInputTaskName.value = ''
+            createModalInputTaskDesc.value = ''
 
-            addTaskModalHeader.classList.remove(...addTaskModalHeader.classList);
-            addTaskModalTitle.classList.remove(...addTaskModalTitle.classList);
-            addTaskModalClose.classList.remove(...addTaskModalClose.classList);
+            createTaskModalHeader.classList.remove(...createTaskModalHeader.classList);
+            createTaskModalTitle.classList.remove(...createTaskModalTitle.classList);
+            createTaskModalClose.classList.remove(...createTaskModalClose.classList);
 
             switch (category.name) {
                 case 'Log':
-                    addTaskModalTitle.classList.add('text-accent-light')
-                    addTaskModalClose.classList.add('text-accent-light', 'close')
-                    addTaskModalHeader.classList.add('modal-header', 'bg-primary')
+                    createTaskModalTitle.classList.add('text-accent-light')
+                    createTaskModalClose.classList.add('text-accent-light', 'close')
+                    createTaskModalHeader.classList.add('modal-header', 'bg-primary')
                     break
                 case 'Todo':
-                    addTaskModalTitle.classList.add('text-accent-light')
-                    addTaskModalClose.classList.add('text-accent-light', 'close')
-                    addTaskModalHeader.classList.add('modal-header', 'bg-tertiary')
+                    createTaskModalTitle.classList.add('text-accent-light')
+                    createTaskModalClose.classList.add('text-accent-light', 'close')
+                    createTaskModalHeader.classList.add('modal-header', 'bg-tertiary')
                     break
                 case 'In Progress':
-                    addTaskModalTitle.classList.add('text-accent-light')
-                    addTaskModalClose.classList.add('text-accent-light', 'close')
-                    addTaskModalHeader.classList.add('modal-header', 'bg-secondary')
+                    createTaskModalTitle.classList.add('text-accent-light')
+                    createTaskModalClose.classList.add('text-accent-light', 'close')
+                    createTaskModalHeader.classList.add('modal-header', 'bg-secondary')
                     break
 
                 case 'Review':
 
-                    addTaskModalTitle.classList.add('text-accent-dark')
-                    addTaskModalClose.classList.add('text-accent-dark', 'close')
-                    addTaskModalHeader.classList.add('modal-header', 'bg-accent-light', 'border-bottom-accent-dark')
+                    createTaskModalTitle.classList.add('text-accent-dark')
+                    createTaskModalClose.classList.add('text-accent-dark', 'close')
+                    createTaskModalHeader.classList.add('modal-header', 'bg-accent-light', 'border-bottom-accent-dark')
                     break
 
                 case 'Done':
-                    addTaskModalTitle.classList.add('text-accent-light')
-                    addTaskModalClose.classList.add('text-accent-light', 'close')
-                    addTaskModalHeader.classList.add('modal-header', 'bg-accent-dark')
+                    createTaskModalTitle.classList.add('text-accent-light')
+                    createTaskModalClose.classList.add('text-accent-light', 'close')
+                    createTaskModalHeader.classList.add('modal-header', 'bg-accent-dark')
                     break
 
                 default:
-                    addTaskModalHeader.classList.add('modal-header', 'bg-primary')
+                    createTaskModalHeader.classList.add('modal-header', 'bg-primary')
             }
 
 
-            addTaskModal.style.display = "block";
+            createTaskModal.style.display = "block";
         }
 
         cardsAdapter(category, tasks, taskColumnCardsContainer)
@@ -202,7 +203,7 @@ function columnsAdapter(tasks) {
 
 }
 
-function cardsAdapter(category, tasks, taskColumnCardsContainer) {
+function cardsAdapter(category, tasks, taskColumnCardsContainer) {  
 
     const filteredTasks = tasks.filter(task => task.task_category_id === category.id);
 
@@ -214,14 +215,16 @@ function cardsAdapter(category, tasks, taskColumnCardsContainer) {
 
         taskCard.key = task.id
         taskCard.dataset.task_id = task.id
-        taskCardTitle.innerText = task.name.slice(0, 10)
-        taskCardDesc.innerText = task.name
+        taskCardTitle.innerText = task.name
+        taskCardDesc.innerText = task.description
+        console.log('task', task);
+        
 
 
         taskCard.onclick = () => {
             // alert(`Task: ${task.name} \nCategory: ${category.name}`)
-            showTaskModalTitle.innerText = task.name.slice(0, 10)
-            showTaskModalDesc.innerText = task.name
+            showTaskModalTitle.innerText = task.name
+            showTaskModalDesc.innerText = task.description
 
             showTaskModalHeader.classList.remove(...showTaskModalHeader.classList);
             showTaskModalTitle.classList.remove(...showTaskModalTitle.classList);
