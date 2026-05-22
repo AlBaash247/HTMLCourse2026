@@ -70,18 +70,26 @@
                 <h2 id="createTaskModalTitle">Modal Header</h2>
             </div>
             <div class="modal-body">
-                <p id="createTaskModalDesc">Fill in task details below.</p>
+                <!-- <p id="createTaskModalDesc">Fill in task details below.</p> -->
                 <form id="createTaskModalForm" class="modal-form">
-                    <label class="modal-form-label" for="createModalInputTaskName">Task Name <span class="required">*</span></label>
-                    <input id="createModalInputTaskName" type="text" class="input modal-form-input" placeholder="Enter task name" required>
 
-                    <label class="modal-form-label" for="createModalInputTaskDesc">Description</label>
-                    <textarea id="createModalInputTaskDesc" class="input modal-form-textarea" placeholder="Optional description"></textarea>
+                    <div class="input-group">
+                        <label class="modal-form-label" for="createModalInputTaskName">Task Name <span
+                                class="required">*</span></label>
+                        <input id="createModalInputTaskName" type="text" class="input modal-form-input"
+                            placeholder="Enter task name" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="modal-form-label" for="createModalInputTaskDesc">Description</label>
+                        <textarea id="createModalInputTaskDesc" class="input modal-form-textarea"
+                            placeholder="Optional description"></textarea>
+                    </div>
 
                     <input id="createModalInputTaskCategory" type="hidden" value="">
 
                     <div class="modal-actions">
-                        <button id="createTaskModalSubmit" type="button" class="button">Create Task</button>
+                        <button id="createTaskModalSubmit" type="button" class="btn btn-primary">Create Task</button>
                     </div>
                 </form>
             </div>
@@ -112,24 +120,27 @@
 
                     <div class="input-group">
                         <label class="modal-form-label" for="updateModalInputTaskCategory">Category</label>
-                        <select id="updateModalInputTaskCategory"  class="input modal-form-input">
+                        <select id="updateModalInputTaskCategory" class="input modal-form-input">
                         </select>
                     </div>
 
                     <div class="input-group">
-                        <label class="modal-form-label" for="updateModalInputTaskName">Task Name <span class="required">*</span></label>
-                        <input id="updateModalInputTaskName" type="text" class="input modal-form-input" placeholder="Enter task name" required>
+                        <label class="modal-form-label" for="updateModalInputTaskName">Task Name <span
+                                class="required">*</span></label>
+                        <input id="updateModalInputTaskName" type="text" class="input modal-form-input"
+                            placeholder="Enter task name" required>
                     </div>
 
 
                     <div class="input-group">
                         <label class="modal-form-label" for="updateModalInputTaskDesc">Description</label>
-                        <textarea id="updateModalInputTaskDesc" class="input modal-form-textarea" placeholder="Optional description"></textarea>
+                        <textarea id="updateModalInputTaskDesc" class="input modal-form-textarea"
+                            placeholder="Optional description"></textarea>
                     </div>
 
 
                     <div class="modal-actions">
-                        <button id="updateTaskModalSubmit" type="button" class="button">Update Task</button>
+                        <button id="updateTaskModalSubmit" type="button" class="btn btn-primary">Update Task</button>
                     </div>
                 </form>
             </div>

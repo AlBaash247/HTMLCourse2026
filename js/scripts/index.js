@@ -196,7 +196,7 @@ function columnsAdapter(tasks) {
 
         taskColumnAddTask.onclick = () => {
             createTaskModalTitle.innerText = `Add Task to ${category.name}`
-            createTaskModalDesc.innerText = `Add a new task to ${category.name}. Task name is required; description is optional.`
+            // createTaskModalDesc.innerText = `Add a new task to ${category.name}. Task name is required; description is optional.`
             createModalInputTaskCategory.value = category.id
             createModalInputTaskName.value = ''
             createModalInputTaskDesc.value = ''

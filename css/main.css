@@ -146,11 +146,22 @@ body {
 }
 
 
-.btn {}
+.btn {
+    padding: 8px 16px;
+    border: 0;
+    border-radius: var(--border-radius);
+    
+}
 
-.btn:hover {}
+.btn:hover {
+    scale: 1.02;
+    cursor: pointer;
+}
 
-.btn-primary {}
+.btn-primary {
+    color:var(--accent-light-color);
+background-color: var(--primary-color);
+}
 
 
 .btn-secondary {}
@@ -404,3 +415,4 @@ input {}
     flex-flow: column;
     gap: 4px;
 }
+
