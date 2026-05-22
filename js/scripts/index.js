@@ -158,11 +158,14 @@ function addSelectOptionsToUpdateModalInputTaskCategory(task) {
     updateModalInputTaskCategory.innerHTML = null
 
     taskCategories?.forEach(category => {
-        const newOption = document.createElement('option');
-        newOption.value = category.id;
-        newOption.textContent = category.name;
-        newOption.selected = category.id == task.task_category_id ? true : false
-        updateModalInputTaskCategory.appendChild(newOption);
+
+        if (category.name != 'Archive') {
+            const newOption = document.createElement('option');
+            newOption.value = category.id;
+            newOption.textContent = category.name;
+            newOption.selected = category.id == task.task_category_id ? true : false
+            updateModalInputTaskCategory.appendChild(newOption);
+        }
     });
 
 }
@@ -341,7 +344,7 @@ async function fetchUpdateQuickTask() {
         description: updateModalInputTaskDesc.value
     }
 
-     const response = await fetchApiData(METHOD_PUT, API_URL_QUICK_TASK_UPDATE + updateModalInputTaskId.value, data)
+    const response = await fetchApiData(METHOD_PUT, API_URL_QUICK_TASK_UPDATE + updateModalInputTaskId.value, data)
 
     if (response.success) {
         updateTaskModal.style.display = 'none'
