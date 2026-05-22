@@ -1,4 +1,4 @@
 
 > # TODO
 >
-> #### [] implement code for updateTaskModal
+> #### [x] implement code for updateTaskModal
