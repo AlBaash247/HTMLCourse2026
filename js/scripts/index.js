@@ -38,11 +38,28 @@ const createTaskModalTitle = document.getElementById("createTaskModalTitle");
 const createTaskModalDesc = document.getElementById("createTaskModalDesc");
 const closeShowModal = document.getElementsByClassName("close")[0];
 
-
 // inputs add task modal
 const createModalInputTaskName = document.getElementById('createModalInputTaskName')
 const createModalInputTaskDesc = document.getElementById('createModalInputTaskDesc')
 const createModalInputTaskCategory = document.getElementById('createModalInputTaskCategory')
+
+
+
+
+// Get the update modal
+const updateTaskModal = document.getElementById("updateTaskModal");
+const updateTaskModalClose = document.getElementById("updateTaskModalClose")
+const updateTaskModalHeader = document.getElementById("updateTaskModalHeader")
+const updateTaskModalSubmit = document.getElementById('updateTaskModalSubmit')
+
+const updateTaskModalTitle = document.getElementById("updateTaskModalTitle");
+// const updateTaskModalDesc = document.getElementById("updateTaskModalDesc");
+
+// inputs update task modal
+const updateModalInputTaskId = document.getElementById('updateModalInputTaskId')
+const updateModalInputTaskName = document.getElementById('updateModalInputTaskName')
+const updateModalInputTaskDesc = document.getElementById('updateModalInputTaskDesc')
+const updateModalInputTaskCategory = document.getElementById('updateModalInputTaskCategory')
 
 
 
@@ -56,6 +73,15 @@ createTaskModalClose.onclick = function () {
     createTaskModal.style.display = "none";
 }
 
+
+
+updateTaskModalClose.onclick = function () {
+    updateTaskModal.style.display = "none";
+}
+
+
+
+
 // When the user clicks anywhere outside of either modal, close it
 window.addEventListener('click', function (event) {
     if (event.target == showTaskModal) {
@@ -65,6 +91,10 @@ window.addEventListener('click', function (event) {
     if (event.target == createTaskModal) {
         createTaskModal.style.display = "none";
     }
+
+    if (event.target == updateTaskModal) {
+        updateTaskModal.style.display = "none";
+    }
 });
 
 
@@ -72,12 +102,16 @@ createTaskModalSubmit.onclick = function () {
     fetchAddQuickTask()
 }
 
+updateTaskModalSubmit.onclick = function () {
+    fetchUpdateQuickTask()
+}
+
 if (getToken()) {
     fetchTaskCategories()
 }
 
 
-async function fetchAddQuickTask(){
+async function fetchAddQuickTask() {
     const name = createModalInputTaskName.value.trim()
     if (!name) {
         alert('Task name is required.')
@@ -114,6 +148,22 @@ async function fetchTaskCategories() {
         taskCategories = response.data
         fetchQuickTasks()
     }
+
+}
+
+
+function addSelectOptionsToUpdateModalInputTaskCategory(task) {
+
+
+    updateModalInputTaskCategory.innerHTML = null
+
+    taskCategories?.forEach(category => {
+        const newOption = document.createElement('option');
+        newOption.value = category.id;
+        newOption.textContent = category.name;
+        newOption.selected = category.id == task.task_category_id ? true : false
+        updateModalInputTaskCategory.appendChild(newOption);
+    });
 
 }
 
@@ -189,7 +239,6 @@ function columnsAdapter(tasks) {
                     createTaskModalHeader.classList.add('modal-header', 'bg-primary')
             }
 
-
             createTaskModal.style.display = "block";
         }
 
@@ -203,7 +252,7 @@ function columnsAdapter(tasks) {
 
 }
 
-function cardsAdapter(category, tasks, taskColumnCardsContainer) {  
+function cardsAdapter(category, tasks, taskColumnCardsContainer) {
 
     const filteredTasks = tasks.filter(task => task.task_category_id === category.id);
 
@@ -218,59 +267,91 @@ function cardsAdapter(category, tasks, taskColumnCardsContainer) {
         taskCardTitle.innerText = task.name
         taskCardDesc.innerText = task.description
         console.log('task', task);
-        
+
 
 
         taskCard.onclick = () => {
             // alert(`Task: ${task.name} \nCategory: ${category.name}`)
-            showTaskModalTitle.innerText = task.name
-            showTaskModalDesc.innerText = task.description
+            updateModalInputTaskId.value = task.id
+            updateTaskModalTitle.innerText = task.name
+            updateModalInputTaskName.value = task.name
+            updateModalInputTaskDesc.value = task.description
 
-            showTaskModalHeader.classList.remove(...showTaskModalHeader.classList);
-            showTaskModalTitle.classList.remove(...showTaskModalTitle.classList);
-            showTaskModalClose.classList.remove(...showTaskModalClose.classList);
+            updateTaskModalHeader.classList.remove(...updateTaskModalHeader.classList);
+            updateTaskModalTitle.classList.remove(...updateTaskModalTitle.classList);
+            updateTaskModalClose.classList.remove(...updateTaskModalClose.classList);
 
             switch (category.name) {
                 case 'Log':
-                    showTaskModalTitle.classList.add('text-accent-light')
-                    showTaskModalClose.classList.add('text-accent-light', 'close')
-                    showTaskModalHeader.classList.add('modal-header', 'bg-primary')
+                    updateTaskModalTitle.classList.add('text-accent-light')
+                    updateTaskModalClose.classList.add('text-accent-light', 'close')
+                    updateTaskModalHeader.classList.add('modal-header', 'bg-primary')
                     break
                 case 'Todo':
-                    showTaskModalTitle.classList.add('text-accent-light')
-                    showTaskModalClose.classList.add('text-accent-light', 'close')
-                    showTaskModalHeader.classList.add('modal-header', 'bg-tertiary')
+                    updateTaskModalTitle.classList.add('text-accent-light')
+                    updateTaskModalClose.classList.add('text-accent-light', 'close')
+                    updateTaskModalHeader.classList.add('modal-header', 'bg-tertiary')
                     break
                 case 'In Progress':
-                    showTaskModalTitle.classList.add('text-accent-light')
-                    showTaskModalClose.classList.add('text-accent-light', 'close')
-                    showTaskModalHeader.classList.add('modal-header', 'bg-secondary')
+                    updateTaskModalTitle.classList.add('text-accent-light')
+                    updateTaskModalClose.classList.add('text-accent-light', 'close')
+                    updateTaskModalHeader.classList.add('modal-header', 'bg-secondary')
                     break
 
                 case 'Review':
 
-                    showTaskModalTitle.classList.add('text-accent-dark')
-                    showTaskModalClose.classList.add('text-accent-dark', 'close')
-                    showTaskModalHeader.classList.add('modal-header', 'bg-accent-light', 'border-bottom-accent-dark')
+                    updateTaskModalTitle.classList.add('text-accent-dark')
+                    updateTaskModalClose.classList.add('text-accent-dark', 'close')
+                    updateTaskModalHeader.classList.add('modal-header', 'bg-accent-light', 'border-bottom-accent-dark')
                     break
 
                 case 'Done':
-                    showTaskModalTitle.classList.add('text-accent-light')
-                    showTaskModalClose.classList.add('text-accent-light', 'close')
-                    showTaskModalHeader.classList.add('modal-header', 'bg-accent-dark')
+                    updateTaskModalTitle.classList.add('text-accent-light')
+                    updateTaskModalClose.classList.add('text-accent-light', 'close')
+                    updateTaskModalHeader.classList.add('modal-header', 'bg-accent-dark')
                     break
 
                 default:
-                    showTaskModalHeader.classList.add('modal-header', 'bg-primary')
+                    updateTaskModalHeader.classList.add('modal-header', 'bg-primary')
             }
 
-            showTaskModal.style.display = "block";
+            addSelectOptionsToUpdateModalInputTaskCategory(task)
+            updateTaskModal.style.display = "block";
         }
 
 
         taskColumnCardsContainer.appendChild(taskCardClone)
 
     });
+
+}
+
+
+async function fetchUpdateQuickTask() {
+
+    if (updateModalInputTaskCategory.value == "") {
+        alert("Please Insert Task Title/Name!")
+        return
+    }
+
+    let data = {
+        id: updateModalInputTaskId.value,
+        name: updateModalInputTaskName.value,
+        task_category_id: updateModalInputTaskCategory.value,
+        description: updateModalInputTaskDesc.value
+    }
+
+     const response = await fetchApiData(METHOD_PUT, API_URL_QUICK_TASK_UPDATE + updateModalInputTaskId.value, data)
+
+    if (response.success) {
+        updateTaskModal.style.display = 'none'
+        updateModalInputTaskName.value = ''
+        updateModalInputTaskDesc.value = ''
+        updateModalInputTaskCategory.value = ''
+        fetchQuickTasks()
+    } else {
+        alert(response.message || 'Could not update task.')
+    }
 
 }
 

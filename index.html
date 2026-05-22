@@ -46,7 +46,7 @@
         <div class="modal-content">
             <div id="showTaskModalHeader" class="modal-header">
                 <span id="showTaskModalClose" class="close">&times;</span>
-                <h2 id="showTaskModalTitle" >Modal Header</h2>
+                <h2 id="showTaskModalTitle">Modal Header</h2>
             </div>
             <div class="modal-body">
                 <p id="showTaskModalDesc">Some text in the Modal Body show</p>
@@ -105,18 +105,23 @@
                 <h2 id="updateTaskModalTitle">Modal Header</h2>
             </div>
             <div class="modal-body">
-                <p id="updateTaskModalDesc">Fill in task details below.</p>
+                <!-- <p id="updateTaskModalDesc">Fill in task details below.</p> -->
                 <form id="updateTaskForm" class="modal-form">
+                    <input id="updateModalInputTaskId" type="hidden">
+
+
                     <label for="updateModalInputTaskName">Task Name <span class="required">*</span></label>
                     <input id="updateModalInputTaskName" type="text" placeholder="Enter task name" required>
 
                     <label for="updateModalInputTaskDesc">Description</label>
                     <textarea id="updateModalInputTaskDesc" placeholder="Optional description"></textarea>
 
-                    <input id="updateModalInputTaskCategory" type="hidden" value="">
+                    <select id="updateModalInputTaskCategory">
+
+                    </select>
 
                     <div class="modal-actions">
-                        <button id="updateTaskSubmit" type="button" class="button">Update Task</button>
+                        <button id="updateTaskModalSubmit" type="button" class="button">Update Task</button>
                     </div>
                 </form>
             </div>
