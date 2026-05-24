@@ -8,12 +8,12 @@ export const API_URL_AUTH_USER = API_URL_BASE + "/auth/user"
 export const API_URL_AUTH_LOGOUT = API_URL_BASE + "/auth/logout"
 
 
-export const API_URL_QUICK_TASK_PING = API_URL_BASE + "/quick_tasks/ping"
-export const API_URL_QUICK_TASK_INDEX = API_URL_BASE + "/quick_tasks/"
-export const API_URL_QUICK_TASK_CREATE = API_URL_BASE + "/quick_tasks/"
-export const API_URL_QUICK_TASK_SHOW = API_URL_BASE + "/quick_tasks/"
-export const API_URL_QUICK_TASK_UPDATE = API_URL_BASE + "/quick_tasks/"
-export const API_URL_QUICK_TASK_DELETE = API_URL_BASE + "/quick_tasks/"
+export const API_URL_TASK_PING = API_URL_BASE + "/tasks/ping"
+export const API_URL_TASK_INDEX = API_URL_BASE + "/tasks/"
+export const API_URL_TASK_CREATE = API_URL_BASE + "/tasks/"
+export const API_URL_TASK_SHOW = API_URL_BASE + "/tasks/"
+export const API_URL_TASK_UPDATE = API_URL_BASE + "/tasks/"
+export const API_URL_TASK_DELETE = API_URL_BASE + "/tasks/"
 
 export const API_URL_TASK_CATEGORY_PING = API_URL_BASE + "/task_categories/ping"
 export const API_URL_TASK_CATEGORY_INDEX = API_URL_BASE + "/task_categories/"

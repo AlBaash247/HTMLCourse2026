@@ -1,9 +1,9 @@
 import {
     getToken, fetchApiData,
     METHOD_GET, METHOD_POST, METHOD_PUT, METHOD_UPDATE, METHOD_DELETE,
-    API_URL_QUICK_TASK_PING, API_URL_QUICK_TASK_INDEX,
-    API_URL_QUICK_TASK_CREATE, API_URL_QUICK_TASK_SHOW,
-    API_URL_QUICK_TASK_UPDATE, API_URL_QUICK_TASK_DELETE,
+    API_URL_TASK_PING, API_URL_TASK_INDEX,
+    API_URL_TASK_CREATE, API_URL_TASK_SHOW,
+    API_URL_TASK_UPDATE, API_URL_TASK_DELETE,
     API_URL_TASK_CATEGORY_PING, API_URL_TASK_CATEGORY_INDEX
 } from '../constants/api.js'
 
@@ -99,11 +99,11 @@ window.addEventListener('click', function (event) {
 
 
 createTaskModalSubmit.onclick = function () {
-    fetchAddQuickTask()
+    fetchAddTask()
 }
 
 updateTaskModalSubmit.onclick = function () {
-    fetchUpdateQuickTask()
+    fetchUpdateTask()
 }
 
 if (getToken()) {
@@ -111,7 +111,7 @@ if (getToken()) {
 }
 
 
-async function fetchAddQuickTask() {
+async function fetchAddTask() {
     const name = createModalInputTaskName.value.trim()
     if (!name) {
         alert('Task name is required.')
@@ -125,14 +125,14 @@ async function fetchAddQuickTask() {
         task_category_id: Number(createModalInputTaskCategory.value)
     }
 
-    const response = await fetchApiData(METHOD_POST, API_URL_QUICK_TASK_CREATE, data)
+    const response = await fetchApiData(METHOD_POST, API_URL_TASK_CREATE, data)
 
     if (response.success) {
         createTaskModal.style.display = 'none'
         createModalInputTaskName.value = ''
         createModalInputTaskDesc.value = ''
         createModalInputTaskCategory.value = ''
-        fetchQuickTasks()
+        fetchTasks()
     } else {
         alert(response.message || 'Could not add task.')
     }
@@ -146,7 +146,7 @@ async function fetchTaskCategories() {
     if (response.success) {
         // mainTasksColumnsContainer.innerText = JSON.stringify(response)
         taskCategories = response.data
-        fetchQuickTasks()
+        fetchTasks()
     }
 
 }
@@ -171,9 +171,9 @@ function addSelectOptionsToUpdateModalInputTaskCategory(task) {
 }
 
 
-async function fetchQuickTasks() {
+async function fetchTasks() {
 
-    let response = await fetchApiData(METHOD_GET, API_URL_QUICK_TASK_INDEX, null)
+    let response = await fetchApiData(METHOD_GET, API_URL_TASK_INDEX, null)
 
     if (response.success) {
         columnsAdapter(response.data)
@@ -330,7 +330,7 @@ function cardsAdapter(category, tasks, taskColumnCardsContainer) {
 }
 
 
-async function fetchUpdateQuickTask() {
+async function fetchUpdateTask() {
 
     if (updateModalInputTaskCategory.value == "") {
         alert("Please Insert Task Title/Name!")
@@ -344,14 +344,14 @@ async function fetchUpdateQuickTask() {
         description: updateModalInputTaskDesc.value
     }
 
-    const response = await fetchApiData(METHOD_PUT, API_URL_QUICK_TASK_UPDATE + updateModalInputTaskId.value, data)
+    const response = await fetchApiData(METHOD_PUT, API_URL_TASK_UPDATE + updateModalInputTaskId.value, data)
 
     if (response.success) {
         updateTaskModal.style.display = 'none'
         updateModalInputTaskName.value = ''
         updateModalInputTaskDesc.value = ''
         updateModalInputTaskCategory.value = ''
-        fetchQuickTasks()
+        fetchTasks()
     } else {
         alert(response.message || 'Could not update task.')
     }
@@ -377,7 +377,7 @@ async function fetchUpdateQuickTask() {
 
 
 
-/** ================ QuickTasks Response
+/** ================ Tasks Response
  
 { 
     "success": true, 
@@ -393,7 +393,7 @@ async function fetchUpdateQuickTask() {
              "created_at": "2026-05-01T17:09:40.000000Z",
              "updated_at": "2026-05-15T20:27:53.000000Z" },
     ], 
-    "message": "Quick Tasks retrieved successfully." 
+    "message": " Tasks retrieved successfully." 
 }
 
 */
