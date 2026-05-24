@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="../css/main.css">
+
+</head>
+
+<body>
+    <div class="main-container column">
+
+        <div class="nav-container">
+            <div class="nav-content-container">
+                <h1>Kite</h1>
+            </div>
+
+            <div id="navLinksContainer" class="nav-content-container">
+            </div>
+
+            <div id="navAuthLinksContainer" class="nav-content-container">
+            </div>
+
+        </div>
+
+
+
+        <div>
+            <div id="resultContainer"></div>
+
+            <div id="profileUserCard" class="modal-content" style="display:none; margin:24px auto 0; width:min(90%, 600px); height:auto;">
+                <div class="modal-header" style="background: var(--primary-color); color: white;">
+                    <h2>User Profile</h2>
+                </div>
+                <div class="modal-body" style="display:block; padding: 16px;">
+                    <form id="profileUserForm" class="modal-form">
+                        <input id="profileUserId" type="hidden">
+
+                        <div class="input-group">
+                            <label class="modal-form-label" for="profileInputName">Name</label>
+                            <input id="profileInputName" type="text" class="input modal-form-input" disabled>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="modal-form-label" for="profileInputEmail">Email</label>
+                            <input id="profileInputEmail" type="email" class="input modal-form-input" disabled>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="modal-form-label" for="profileInputEmailVerifiedAt">Email Verified At</label>
+                            <input id="profileInputEmailVerifiedAt" type="text" class="input modal-form-input" disabled>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="modal-form-label" for="profileInputCreatedAt">Created At</label>
+                            <input id="profileInputCreatedAt" type="text" class="input modal-form-input" disabled>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="modal-form-label" for="profileInputUpdatedAt">Updated At</label>
+                            <input id="profileInputUpdatedAt" type="text" class="input modal-form-input" disabled>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script type="module" src="../js/templates/nav-bar.js"></script>
+    <script type="module" src="../js/scripts/profile.js"></script>
+</body>
+
+</html>
