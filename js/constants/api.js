@@ -95,6 +95,11 @@ export function getToken() {
     return token
 }
 
+
+export function removeToken() {
+    localStorage.removeItem("STORE_KEY_TOKEN");
+}
+
 function getSpinningProgressElement() {
     let spinner = document.getElementById('spinningProgress')
     if (spinner) {

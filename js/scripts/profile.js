@@ -1,5 +1,5 @@
 import {
-    fetchApiData,
+    fetchApiData, removeToken,
     METHOD_GET,
     API_URL_AUTH_USER, API_URL_AUTH_LOGOUT
 } from '../constants/api.js'
@@ -78,8 +78,9 @@ async function fetchLogout() {
     let response = await fetchApiData(METHOD_GET, API_URL_AUTH_LOGOUT, null)
 
     if (response.success) {
+        removeToken()
         alert(JSON.stringify(response.message))
-        window.open("./login.html", "_self");
+        window.open("./login.html", "_self")
     } else {
         alert('Unable to load user information.');
     }

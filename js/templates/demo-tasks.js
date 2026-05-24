@@ -84,8 +84,8 @@ let demoTasks = `
 `
 
 
-let mainColumnTasksContainer = document.getElementById("mainColumnTasksContainer");
+let mainTasksColumnsContainer = document.getElementById("mainTasksColumnsContainer");
 
 if (getToken() === null) {
-    mainColumnTasksContainer.innerHTML = demoTasks;
+    mainTasksColumnsContainer.innerHTML = demoTasks;
 }
