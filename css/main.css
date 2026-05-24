@@ -24,6 +24,8 @@ body {
 }
 
 
+
+
 .text-primary {
     color: var(--primary-color);
 }
@@ -86,12 +88,24 @@ body {
     flex-direction: column;
 }
 
+.wrap {
+    flex-wrap: wrap;
+}
+
+.nowrap {
+    flex-wrap: nowrap;
+}
+
 .justify-center {
     justify-content: center;
 }
 
 .justify-between {
     justify-content: space-between;
+}
+
+.justify-end{
+    justify-content: end;
 }
 
 .align-center {
@@ -109,6 +123,15 @@ body {
 
 .gap-16 {
     gap: 16px;
+}
+
+.px-1{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.mt-4{
+    margin-top: 4rem;
 }
 
 .main-container {
@@ -191,18 +214,18 @@ input {}
 
 
 
-
-
-
 .task-card-main-container {
-    height: 100vh;
+    /* allow the container to grow beyond the viewport so bottom spacing can apply */
+    min-height: 100vh;
     display: flex;
-    flex-flow: row wrap;
     justify-content: space-between;
-    padding: 100px 16px;
+    /* keep top padding, add bottom padding for visible space after last card */
+    padding: 50px 16px 4rem;
     gap: 16px;
 
 }
+
+
 
 .task-card-container {
     flex: 1;

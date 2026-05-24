@@ -62,6 +62,31 @@ const updateModalInputTaskDesc = document.getElementById('updateModalInputTaskDe
 const updateModalInputTaskCategory = document.getElementById('updateModalInputTaskCategory')
 
 
+const btnTasksDisplay = document.getElementById('btnTasksDisplay')
+
+
+btnTasksDisplay.onclick = function () {
+    const is_column = mainTasksColumnsContainer.classList.contains('column')
+    mainTasksColumnsContainer.classList = []
+    mainTasksColumnsContainer.classList.add('task-card-main-container')
+
+    if (is_column) {
+        mainTasksColumnsContainer.classList.add('row')
+        mainTasksColumnsContainer.classList.add('wrap')
+    }
+    else {
+        mainTasksColumnsContainer.classList.add('column')
+        mainTasksColumnsContainer.classList.add('nowrap')
+    }
+
+    console.log('mainTasksColumnsContainer.classList', is_column);
+
+    mainTasksColumnsContainer.innerHTML = ''
+    fetchTasks();
+
+}
+
+
 
 // When the user clicks on <closeShowModal> (x), close the modal
 showTaskModalClose.onclick = function () {
@@ -269,7 +294,7 @@ function cardsAdapter(category, tasks, taskColumnCardsContainer) {
         taskCard.dataset.task_id = task.id
         taskCardTitle.innerText = task.name
         taskCardDesc.innerText = task.description
-        console.log('task', task);
+        // console.log('task', task);
 
 
 
