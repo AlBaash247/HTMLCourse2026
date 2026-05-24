@@ -28,14 +28,14 @@
 
 
         <div>
-            <div id="resultContainer"></div>
+
 
             <div id="profileUserCard" class="modal-content" style="display:none; margin:24px auto 0; width:min(90%, 600px); height:auto;">
                 <div class="modal-header" style="background: var(--primary-color); color: white;">
                     <h2>User Profile</h2>
                 </div>
                 <div class="modal-body" style="display:block; padding: 16px;">
-                    <form id="profileUserForm" class="modal-form">
+                    <div id="profileUserForm" class="modal-form">
                         <input id="profileUserId" type="hidden">
 
                         <div class="input-group">
@@ -62,7 +62,10 @@
                             <label class="modal-form-label" for="profileInputUpdatedAt">Updated At</label>
                             <input id="profileInputUpdatedAt" type="text" class="input modal-form-input" disabled>
                         </div>
-                    </form>
+
+                        <button id="btnLogout" class="btn btn-tertiary"> Logout</button>
+
+                    </div>
                 </div>
             </div>
         </div>

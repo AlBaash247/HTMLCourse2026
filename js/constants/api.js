@@ -4,6 +4,8 @@ export const API_URL_AUTH = API_URL_BASE + "/auth/"
 export const API_URL_AUTH_PING = API_URL_BASE + "/auth/ping"
 export const API_URL_AUTH_LOGIN = API_URL_BASE + "/auth/login"
 export const API_URL_AUTH_REGISTER = API_URL_BASE + "/auth/register"
+export const API_URL_AUTH_USER = API_URL_BASE + "/auth/user"
+export const API_URL_AUTH_LOGOUT = API_URL_BASE + "/auth/logout"
 
 
 export const API_URL_QUICK_TASK_PING = API_URL_BASE + "/quick_tasks/ping"
@@ -51,6 +53,7 @@ export function fetchHeader(method, encodedData) {
 
 
 export async function fetchApiData(method, url, data) {
+    showSpinningProgress()
 
     try {
         const response = await fetch(url, fetchHeader(method, data));
@@ -59,9 +62,9 @@ export async function fetchApiData(method, url, data) {
         }
 
         const result = await response.json();
-        console.log('>>> ' + url, result.data.token);
+        console.log('>>> ' + url, result?.data?.token);
 
-        if(result.data.token){
+        if (result?.data?.token) {
             storeToken(result.data.token)
         }
 
@@ -71,6 +74,8 @@ export async function fetchApiData(method, url, data) {
         console.error(data);
         console.error(error.message);
         return null;
+    } finally {
+        hideSpinningProgress()
     }
 }
 
@@ -88,4 +93,29 @@ export function getToken() {
     }
 
     return token
+}
+
+function getSpinningProgressElement() {
+    let spinner = document.getElementById('spinningProgress')
+    if (spinner) {
+        return spinner
+    }
+
+    spinner = document.createElement('div')
+    spinner.id = 'spinningProgress'
+    spinner.className = 'spinning-progress'
+    document.body.appendChild(spinner)
+    return spinner
+}
+
+function showSpinningProgress() {
+    const spinner = getSpinningProgressElement()
+    spinner.style.display = 'flex'
+}
+
+function hideSpinningProgress() {
+    const spinner = document.getElementById('spinningProgress')
+    if (spinner) {
+        spinner.style.display = 'none'
+    }
 }

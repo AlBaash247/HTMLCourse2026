@@ -1,12 +1,12 @@
 import {
     fetchApiData,
     METHOD_GET,
-    API_URL_AUTH_USER,
+    API_URL_AUTH_USER, API_URL_AUTH_LOGOUT
 } from '../constants/api.js'
 
 
-const resultContainer = document.getElementById('resultContainer')
-const btnGetUser = document.getElementById('btnGetUser')
+
+
 const profileUserCard = document.getElementById('profileUserCard')
 const profileUserForm = document.getElementById('profileUserForm')
 const profileUserId = document.getElementById('profileUserId')
@@ -15,11 +15,17 @@ const profileInputEmail = document.getElementById('profileInputEmail')
 const profileInputEmailVerifiedAt = document.getElementById('profileInputEmailVerifiedAt')
 const profileInputCreatedAt = document.getElementById('profileInputCreatedAt')
 const profileInputUpdatedAt = document.getElementById('profileInputUpdatedAt')
+const btnLogout = document.getElementById('btnLogout')
+
+btnLogout.onclick = () => {
+    fetchLogout();
+}
 
 
-  fetchUserDetails()
+fetchUserDetails()
+
 async function fetchUserDetails() {
-    resultContainer.textContent = ''
+
     profileUserCard.style.display = 'none'
 
     let response = await fetchApiData(METHOD_GET, API_URL_AUTH_USER, null)
@@ -27,7 +33,7 @@ async function fetchUserDetails() {
     if (response.success && response.data) {
         renderUserProfile(response.data)
     } else {
-        resultContainer.textContent = 'Unable to load user information.'
+        alert('Unable to load user information.');
     }
 }
 
@@ -65,6 +71,20 @@ function formatDatetime(value, fallback = '') {
 
     return `${day}-${month}-${year} | ${hours}:${minutes}`
 }
+
+
+async function fetchLogout() {
+
+    let response = await fetchApiData(METHOD_GET, API_URL_AUTH_LOGOUT, null)
+
+    if (response.success) {
+        alert(JSON.stringify(response.message))
+        window.open("./login.html", "_self");
+    } else {
+        alert('Unable to load user information.');
+    }
+}
+
 
 // result:
 /*
