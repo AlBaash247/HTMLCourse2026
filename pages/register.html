@@ -11,31 +11,50 @@
 
 <body>
 
-    <div class="main-container">
-        <div id="navContainer" class="nav-container"></div>
+    <div class="main-container column">
 
-
-        <div class="auth-form-container">
-
-            <div class="auth-form">
-                <div class="column justify-center">
-                    <h2 class="text-center">Register</h2>
-                    <p class="text-center"> Create a new account</p>
-                </div>
-                <input id="inputName" type="name" placeholder="yousuf" value="yousuf" />
-                <input id="inputEmail" type="email" placeholder="email" value="testuser5@mail.com" />
-                <input id="inputPassword" type="password" placeholder="password" value="Pass@123" />
-
-                <br>
-
-                <button id="btnRegister" class="btn w-100 btn-primary">REGISTER</button>
-                <div class="row justify-between align-baseline gap-8">
-                    <p>You already have an account?</p>
-                    <a href="./login.html">Login</a>
-                </div>
-
+        <div class="nav-container">
+            <div class="nav-content-container">
+                <h1>Kite</h1>
             </div>
 
+            <div id="navLinksContainer" class="nav-content-container">
+            </div>
+
+            <div id="navAuthLinksContainer" class="nav-content-container">
+            </div>
+
+        </div>
+
+        <div id="registerCard" class="modal-content" style="margin:24px auto 0; width:min(90%, 600px); height:auto;">
+            <div class="modal-header" style="background: var(--primary-color); color: white;">
+                <h2>Register</h2>
+            </div>
+            <div class="modal-body" style="display:block; padding: 16px;">
+                <div id="registerForm" class="modal-form">
+                    <div class="input-group">
+                        <label class="modal-form-label" for="inputName">Name</label>
+                        <input id="inputName" type="text" class="input modal-form-input" placeholder="yousuf" value="yousuf" />
+                    </div>
+
+                    <div class="input-group">
+                        <label class="modal-form-label" for="inputEmail">Email</label>
+                        <input id="inputEmail" type="email" class="input modal-form-input" placeholder="email" value="testuser5@mail.com" />
+                    </div>
+
+                    <div class="input-group">
+                        <label class="modal-form-label" for="inputPassword">Password</label>
+                        <input id="inputPassword" type="password" class="input modal-form-input" placeholder="password" value="Pass@123" />
+                    </div>
+
+                    <button id="btnRegister" class="btn w-100 btn-primary">REGISTER</button>
+                    <div class="row justify-between align-baseline gap-8">
+                        <p>You already have an account?</p>
+                        <a href="./login.html">Login</a>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
     </div>
