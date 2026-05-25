@@ -2,7 +2,7 @@ import {
     getToken, fetchApiData,
     METHOD_GET, METHOD_POST, METHOD_PUT, METHOD_UPDATE, METHOD_DELETE,
     API_URL_TASK_PING, API_URL_TASK_INDEX,
-    API_URL_TASK_CREATE, API_URL_TASK_SHOW,
+    API_URL_TASK_CREATE,
     API_URL_TASK_UPDATE, API_URL_TASK_DELETE,
     API_URL_TASK_CATEGORY_PING, API_URL_TASK_CATEGORY_INDEX
 } from '../constants/api.js'
@@ -11,7 +11,7 @@ import {
 let taskCategories = []
 
 const mainTasksColumnsContainer = document.getElementById('mainTasksColumnsContainer')
-const showTaskModalHeader = document.getElementById("showTaskModalHeader")
+
 
 
 
@@ -19,13 +19,6 @@ const showTaskModalHeader = document.getElementById("showTaskModalHeader")
 const taskColumnContainerTemplate = document.getElementById('taskColumnContainerTemplate')
 // this template will go in -> taskColumnCardsContainer
 const taskCardTemplate = document.getElementById('taskCardTemplate')
-
-const showTaskModal = document.getElementById("showTaskModal");
-
-// Get the show modal
-const showTaskModalClose = document.getElementById("showTaskModalClose")
-const showTaskModalTitle = document.getElementById("showTaskModalTitle");
-const showTaskModalDesc = document.getElementById("showTaskModalDesc");
 
 
 // Get the add modal
@@ -36,7 +29,7 @@ const createTaskModalSubmit = document.getElementById('createTaskModalSubmit')
 
 const createTaskModalTitle = document.getElementById("createTaskModalTitle");
 const createTaskModalDesc = document.getElementById("createTaskModalDesc");
-const closeShowModal = document.getElementsByClassName("close")[0];
+
 
 // inputs add task modal
 const createModalInputTaskName = document.getElementById('createModalInputTaskName')
@@ -88,12 +81,6 @@ btnTasksDisplay.onclick = function () {
 
 
 
-// When the user clicks on <closeShowModal> (x), close the modal
-showTaskModalClose.onclick = function () {
-    showTaskModal.style.display = "none";
-}
-
-
 createTaskModalClose.onclick = function () {
     createTaskModal.style.display = "none";
 }
@@ -109,10 +96,6 @@ updateTaskModalClose.onclick = function () {
 
 // When the user clicks anywhere outside of either modal, close it
 window.addEventListener('click', function (event) {
-    if (event.target == showTaskModal) {
-        showTaskModal.style.display = "none";
-    }
-
     if (event.target == createTaskModal) {
         createTaskModal.style.display = "none";
     }
