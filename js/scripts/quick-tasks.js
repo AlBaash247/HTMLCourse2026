@@ -431,10 +431,10 @@ async function fetchUpdateTaskDoneState(task, is_done) {
 */
 
 
-const btnShow = document.getElementById("btnShow")
-btnShow.onclick = function(){
-    fetchShowTask(14)
-}
+// const btnShow = document.getElementById("btnShow")
+// btnShow.onclick = function(){
+//     fetchShowTask(14)
+// }
 
 
 async function fetchShowTask(task_id) {

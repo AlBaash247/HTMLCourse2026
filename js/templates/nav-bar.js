@@ -1,13 +1,13 @@
 import { getToken } from '../constants/api.js'
 
 
-let url = document.URL //window.location.href
-let path = url.includes('/pages/') ? './' : './pages/'
-let index_path = url.includes('/pages/') ? '../' : './'
+let current_url = document.URL //window.location.href
+let path = current_url.includes('/pages/') ? './' : './pages/'
+let index_path = current_url.includes('/pages/') ? '../' : './'
 
 let defaultNavLinks = [
     {
-        label: 'Home',
+        label: 'Index',
         link: index_path + 'index.html'
     },
     {
@@ -47,17 +47,17 @@ export function createNavbarItems(navLinks = defaultNavLinks) {
 
 
     if (navLinksContainer) {
-
         navLinks.forEach(item => {
-            let linkElement = `<a href="${item.link}" class="nav-link">${item.label}</a>`
+            let is_active = current_url.includes(item.label.toLowerCase())? 'text-secondary' : ''            
+            let linkElement = `<a href="${item.link}" class="nav-link ${is_active}">${item.label}</a>`
             navLinksContainer.innerHTML += linkElement
         });
     }
 
     if (navAuthLinksContainer) {
-
-        defaultAuthLinks.forEach(item => {
-            let linkElement = `<a href="${item.link}" class="nav-link">${item.label}</a>`
+      defaultAuthLinks.forEach(item => {
+            let is_active = current_url.includes(item.label.toLowerCase())? 'text-secondary' : ''
+            let linkElement = `<a href="${item.link}" class="nav-link ${is_active}">${item.label}</a>`
             navAuthLinksContainer.innerHTML += linkElement
         });
     }

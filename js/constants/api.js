@@ -1,7 +1,7 @@
 const LOCAL_SERVER = "http://127.0.0.1:8000/api"
 const LIVE_SERVER = "https://www.albaash247.cloud/api"
 
-export const API_URL_BASE = LOCAL_SERVER
+export const API_URL_BASE = LIVE_SERVER
 export const API_URL_AUTH = API_URL_BASE + "/auth/"
 
 export const API_URL_AUTH_PING = API_URL_BASE + "/auth/ping"
