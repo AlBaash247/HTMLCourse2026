@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Tasks</title>
+    <link rel="stylesheet" href="../css/main.css">
+
+</head>
+
+<body>
+    <div class="main-container column">
+
+        <div class="nav-container">
+            <div class="nav-content-container">
+                <h1>Kite</h1>
+            </div>
+
+            <div id="navLinksContainer" class="nav-content-container">
+            </div>
+
+            <div id="navAuthLinksContainer" class="nav-content-container">
+            </div>
+
+        </div>
+
+        <div class="row justify-end gap-8 px-1 mt-4">
+            <button id="btnShow" class="btn btn-tertiary">(0)</button>
+            <button id="btnTasksDisplay" class="btn btn-primary">[]=</button>
+
+        </div>
+
+        <div id="mainTasksColumnsContainer" class="task-card-main-container pb-4 row wrap">
+
+            <!-- taskColumnContainerTemplate ->>> here -->
+        </div>
+
+
+    </div>
+
+
+
+    <!-- create Modal -->
+    <div id="createTaskModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div id="createTaskModalHeader" class="modal-header">
+                <span id="createTaskModalClose" class="close">&times;</span>
+                <h2 id="createTaskModalTitle">Modal Header</h2>
+            </div>
+            <div class="modal-body">
+                <!-- <p id="createTaskModalDesc">Fill in task details below.</p> -->
+                <form id="createTaskModalForm" class="modal-form">
+
+                    <div class="input-group">
+                        <label class="modal-form-label" for="createModalInputTaskName">Task Name <span
+                                class="required">*</span></label>
+                        <input id="createModalInputTaskName" type="text" class="input modal-form-input"
+                            placeholder="Enter task name" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="modal-form-label" for="createModalInputTaskDesc">Description</label>
+                        <textarea id="createModalInputTaskDesc" class="input modal-form-textarea"
+                            placeholder="Optional description"></textarea>
+                    </div>
+
+                    <input id="createModalInputTaskCategory" type="hidden" value="">
+
+                    <!-- <div class="modal-actions"> -->
+                    <button id="createTaskModalSubmit" type="button" class="btn btn-primary w-100">Create Task</button>
+                    <!-- </div> -->
+                </form>
+            </div>
+            <!-- <div class="modal-footer">
+                <h3>Modal Footer</h3>
+            </div> -->
+        </div>
+
+    </div>
+
+
+
+
+    <!-- update Modal -->
+    <div id="updateTaskModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div id="updateTaskModalHeader" class="modal-header">
+                <span id="updateTaskModalClose" class="close">&times;</span>
+                <h2 id="updateTaskModalTitle">Modal Header</h2>
+            </div>
+            <div class="modal-body">
+                <!-- <p id="updateTaskModalDesc">Fill in task details below.</p> -->
+                <form id="updateTaskForm" class="modal-form">
+                    <input id="updateModalInputTaskId" type="hidden">
+
+
+                    <div class="input-group">
+                        <label class="modal-form-label" for="updateModalInputTaskCategory">Category</label>
+                        <select id="updateModalInputTaskCategory" class="input modal-form-input">
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="modal-form-label" for="updateModalInputTaskName">Task Name <span
+                                class="required">*</span></label>
+                        <input id="updateModalInputTaskName" type="text" class="input modal-form-input"
+                            placeholder="Enter task name" required>
+                    </div>
+
+
+                    <div class="input-group">
+                        <label class="modal-form-label" for="updateModalInputTaskDesc">Description</label>
+                        <textarea id="updateModalInputTaskDesc" class="input modal-form-textarea"
+                            placeholder="Optional description"></textarea>
+                    </div>
+
+
+                    <!-- <div class="modal-actions"> -->
+                    <button id="updateTaskModalSubmit" type="button" class="btn btn-primary w-100">Update Task</button>
+                    <!-- </div> -->
+                </form>
+            </div>
+            <!-- <div class="modal-footer">
+                <h3>Modal Footer</h3>
+            </div> -->
+        </div>
+
+    </div>
+
+
+
+    <template id="taskColumnContainerTemplate">
+
+        <div id="taskColumn" class="column task-card-container">
+            <div class="task-card-header">
+                <h2 id="taskColumnTitle">Log</h2>
+                <span id="taskColumnAddTask" class="close">+</span>
+
+            </div>
+
+            <div id="taskColumnCardsContainer" class="task-card-content-container">
+                <!-- taskCardTemplate ->>> here -->
+            </div>
+
+        </div>
+    </template>
+
+    <template id="taskCardTemplate">
+        <div class="row">
+            <div class="column justify-center">
+                <input id="taskCardDone" class="task-card-checkbox" type="checkbox"/>
+            </div>
+
+            <div id="taskCard" class="task-card flex-1">
+                <h4 id="taskCardTitle" class="task-card-title">Task 1</h4>
+                <p id="taskCardDesc" class="task-card-content">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Asperiores vel, at dignissimos odit enim distinctio quasi.</p>
+            </div>
+        </div>
+    </template>
+
+
+
+    <script type="module" src="../js/templates/nav-bar.js"></script>
+    <script type="module" src="../js/templates/demo-tasks.js"></script>
+    <script type="module" src="../js/scripts/quick-tasks.js"></script>
+</body>
+
+</html>

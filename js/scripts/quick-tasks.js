@@ -4,7 +4,8 @@ import {
     API_URL_TASK_PING, API_URL_TASK_INDEX,
     API_URL_TASK_CREATE,
     API_URL_TASK_UPDATE, API_URL_TASK_DELETE,
-    API_URL_TASK_CATEGORY_PING, API_URL_TASK_CATEGORY_INDEX
+    API_URL_TASK_CATEGORY_PING, API_URL_TASK_CATEGORY_INDEX,
+    API_URL_TASK_SHOW
 } from '../constants/api.js'
 
 
@@ -167,7 +168,7 @@ function addSelectOptionsToUpdateModalInputTaskCategory(task) {
 
     taskCategories?.forEach(category => {
 
-        if (category.name != 'Quick Tasks') {
+        if (category.name == 'Quick Tasks') {
             const newOption = document.createElement('option');
             newOption.value = category.id;
             newOption.textContent = category.name;
@@ -255,7 +256,7 @@ function columnsAdapter(tasks) {
 
         cardsAdapter(category, tasks, taskColumnCardsContainer)
 
-        if (category.name != 'Quick Tasks') {
+        if (category.name == 'Quick Tasks') {
             mainTasksColumnsContainer.appendChild(columnContainerClone);
         }
 
@@ -270,15 +271,20 @@ function cardsAdapter(category, tasks, taskColumnCardsContainer) {
     filteredTasks.forEach(task => {
         const taskCardClone = taskCardTemplate.content.cloneNode(true)
         const taskCard = taskCardClone.getElementById("taskCard")
+        const taskCardDone = taskCardClone.getElementById("taskCardDone")
         const taskCardTitle = taskCardClone.getElementById("taskCardTitle")
         const taskCardDesc = taskCardClone.getElementById("taskCardDesc")
+
 
         taskCard.key = task.id
         taskCard.dataset.task_id = task.id
         taskCardTitle.innerText = task.name
         taskCardDesc.innerText = task.description
-        // console.log('task', task);
+        taskCardDone.checked = task.done
 
+        taskCardDone.addEventListener('change', (event) => {
+            fetchUpdateTaskDoneState(task, event.currentTarget.checked)
+        });
 
 
         taskCard.onclick = () => {
@@ -367,6 +373,24 @@ async function fetchUpdateTask() {
 }
 
 
+async function fetchUpdateTaskDoneState(task, is_done) {
+    task.done = is_done ? 1 : 0
+
+    let data = {
+        done: task.done,
+    }
+
+    const response = await fetchApiData(METHOD_PUT, API_URL_TASK_UPDATE + task.id, data)
+
+    if (response.success) {
+        fetchTasks()
+    } else {
+        alert(response.message || 'Could not update task.')
+    }
+}
+
+
+
 
 /** ================ TaskCategories Response
  {
@@ -405,3 +429,22 @@ async function fetchUpdateTask() {
 }
 
 */
+
+
+const btnShow = document.getElementById("btnShow")
+btnShow.onclick = function(){
+    fetchShowTask(14)
+}
+
+
+async function fetchShowTask(task_id) {
+
+
+    const response = await fetchApiData(METHOD_GET, API_URL_TASK_SHOW + task_id, null)
+
+    if (response.success) {
+        alert(JSON.stringify(response.data))
+    } else {
+        alert(response.message || 'Could not update task.')
+    }
+}

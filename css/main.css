@@ -88,6 +88,10 @@ body {
     flex-direction: column;
 }
 
+.flex-1 {
+    flex: 1;
+}
+
 .wrap {
     flex-wrap: wrap;
 }
@@ -104,7 +108,7 @@ body {
     justify-content: space-between;
 }
 
-.justify-end{
+.justify-end {
     justify-content: end;
 }
 
@@ -125,12 +129,12 @@ body {
     gap: 16px;
 }
 
-.px-1{
+.px-1 {
     padding-left: 1rem;
     padding-right: 1rem;
 }
 
-.mt-4{
+.mt-4 {
     margin-top: 4rem;
 }
 
@@ -300,6 +304,12 @@ input {}
     color: var(--accent-dark-color);
 }
 
+
+.task-card-checkbox {
+    height: 32px;
+    width: 32px;
+    border-radius: var(--border-radius);
+}
 
 
 /* The Modal (background) */

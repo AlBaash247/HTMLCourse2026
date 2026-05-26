@@ -9,6 +9,10 @@ let defaultNavLinks = [
     {
         label: 'Home',
         link: index_path + 'index.html'
+    },
+    {
+        label: 'Quick-Tasks',
+        link: path + 'quick-tasks.html'
     }
 ]
 
