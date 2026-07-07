@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    
+    <button id="btnCount">BOB</button>
+
+    <h1 id="counterText"></h1>
+
+    <script>
+        let btnCount = document.getElementById("btnCount")
+        let counterText = document.getElementById("counterText")
+
+        btnCount.onclick = countTheClicks
+
+        
+        let clicks_counter = 10
+        function countTheClicks(){
+            
+            clicks_counter *= 9
+            counterText.innerText = clicks_counter
+        }
+
+    </script>
+
+
+</body>
+
+</html>
