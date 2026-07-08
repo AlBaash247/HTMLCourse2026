@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+
+
+<body>
+
+
+
+    <input type="number" id="input1">
+
+    <button id="btnAdd">+</button>
+    <button id="btnSub">-</button>
+    <button id="btnMul">*</button>
+    <button id="btnDiv">/</button>
+
+    <input type="number" id="input2">
+
+    =
+
+    <p id="result"></p>
+
+
+    <script>
+
+        let input1 = document.getElementById("input1")
+        let input2 = document.getElementById("input2")
+
+        let btnAdd = document.getElementById("btnAdd")
+        let btnSub = document.getElementById("btnSub")
+        let btnMul = document.getElementById("btnMul")
+        let btnDiv = document.getElementById("btnDiv")
+        let result = document.getElementById("result")
+
+        btnAdd.onclick = add;
+        btnSub.onclick = sub;
+        btnMul.onclick = mul;
+        btnDiv.onclick = div;
+
+
+        function add() { let r = parseInt(input1.value) + parseInt(input2.value); result.innerText = ""+r; }
+        function sub() { let r = parseInt(input1.value) - parseInt(input2.value); result.innerText = ""+r; }
+        function mul() { let r = parseInt(input1.value) * parseInt(input2.value); result.innerText = ""+r; }
+        function div() { let r = parseInt(input1.value) / parseInt(input2.value); result.innerText = ""+r; }
+
+
+    </script>
+
+
+</body>
+
+</html>
