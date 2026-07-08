@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .on{
+            background-color: beige;
+        }
+        .off{
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+        <div id="container" class="on" style="height: 100vh; width: 100vw;">
+            <button id="btnLightOnSwitch">ON</button>
+            <button id="btnLightOffSwitch">OFF</button>
+        </div>
+  
+
+    <script>
+
+        let container = document.getElementById("container")
+        let btnLightOnSwitch = document.getElementById("btnLightOnSwitch")
+        let btnLightOffSwitch = document.getElementById("btnLightOffSwitch")
+
+        btnLightOnSwitch.onclick = toggleLight
+        btnLightOffSwitch.onclick = toggleOffLight
+
+       function toggleLight(){
+               container.classList.add('on')
+            container.classList.remove('off')
+        }
+   
+       function toggleOffLight(){
+            container.classList.remove('on')
+            container.classList.add('off')
+        }
+    </script>
+
+
+</body>
+
+</html>
