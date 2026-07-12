@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-flow: row;
+        }
+
+        .color-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-flow: column;
+            justify-content: end;
+            align-items: center;
+            padding: 64px;
+        }
+    </style>
+
+</head>
+
+
+
+<body>
+
+    <div class="container">
+        <div id="color_1" class="color-container">
+            <button id="color_lock_1">lock</button>
+            <h3 id="color_name_1"></h3>
+        </div>
+        <div id="color_2" class="color-container">
+            <button id="color_lock_2">lock</button>
+            <h3 id="color_name_2"></h3>
+        </div>
+        <div id="color_3" class="color-container">
+            <button id="color_lock_3">lock</button>
+            <h3 id="color_name_3"></h3>
+        </div>
+        <div id="color_4" class="color-container">
+            <button id="color_lock_4">lock</button>
+            <h3 id="color_name_4"></h3>
+        </div>
+        <div id="color_5" class="color-container">
+            <button id="color_lock_5">lock</button>
+            <h3 id="color_name_5"></h3>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        let color_1 = document.getElementById("color_1")
+        let color_2 = document.getElementById("color_2")
+        let color_3 = document.getElementById("color_3")
+        let color_4 = document.getElementById("color_4")
+        let color_5 = document.getElementById("color_5")
+
+        let color_name_1 = document.getElementById("color_name_1")
+        let color_name_2 = document.getElementById("color_name_2")
+        let color_name_3 = document.getElementById("color_name_3")
+        let color_name_4 = document.getElementById("color_name_4")
+        let color_name_5 = document.getElementById("color_name_5")
+
+        let color_lock_1 = document.getElementById("color_lock_1")
+        let color_lock_2 = document.getElementById("color_lock_2")
+        let color_lock_3 = document.getElementById("color_lock_3")
+        let color_lock_4 = document.getElementById("color_lock_4")
+        let color_lock_5 = document.getElementById("color_lock_5")
+
+        color_lock_1.onclick = function () { lockContainer(color_lock_1) }
+        color_lock_2.onclick = function () { lockContainer(color_lock_2) }
+        color_lock_3.onclick = function () { lockContainer(color_lock_3) }
+        color_lock_4.onclick = function () { lockContainer(color_lock_4) }
+        color_lock_5.onclick = function () { lockContainer(color_lock_5) }
+
+
+        let myColors = [
+            {
+                color_1: "#FF00FF",
+                color_2: "#FF88AA",
+                color_3: "#FF00CC",
+                color_4: "#FF00FA",
+                color_5: "#FF30DD",
+            },
+            {
+                color_1: "#00FFFF",
+                color_2: "#00FFAA",
+                color_3: "#00FFCC",
+                color_4: "#00FFFA",
+                color_5: "#00FFDD",
+            },
+            {
+                color_1: "#0000FF",
+                color_2: "#00AAFF",
+                color_3: "#00DAFF",
+                color_4: "#10C0FF",
+                color_5: "#9905FF",
+            },
+
+            {
+                color_1: "#ABCDEFF",
+                color_2: "#FFEDCBA",
+                color_3: "#AAFFCC",
+                color_4: "#AACCFF",
+                color_5: "#123456",
+            },
+        ]
+
+
+        setBackgroundColors(getRandomBackgroundColor())
+
+
+        document.addEventListener('keydown', function (event) {
+            if (event.code === 'Space') {
+                // Prevent default browser behavior (like scrolling down)
+                event.preventDefault();
+
+                console.log("space was clicked");
+
+
+                let randomBgColor = getRandomBackgroundColor()
+                setBackgroundColors(randomBgColor)
+            }
+        });
+
+        function getRandomBackgroundColor() {
+            console.log("getRandomBackgroundColor");
+
+            return myColors[Math.floor(Math.random() * myColors.length)]
+        }
+
+        function setBackgroundColors(colorObj) {
+            console.log("colorObj", colorObj);
+
+            if (!color_1.dataset.isLocked) {
+                color_1.style.backgroundColor = colorObj.color_1;
+                color_name_1.innerText = colorObj.color_1;
+            }
+
+            if (!color_2.dataset.isLocked) {
+                color_2.style.backgroundColor = colorObj.color_2;
+                color_name_2.innerText = colorObj.color_2;
+            }
+
+            if (!color_3.dataset.isLocked) {
+                color_3.style.backgroundColor = colorObj.color_3;
+                color_name_3.innerText = colorObj.color_3;
+            }
+
+            if (!color_4.dataset.isLocked) {
+                color_4.style.backgroundColor = colorObj.color_4;
+                color_name_4.innerText = colorObj.color_4;
+            }
+
+            if (!color_5.dataset.isLocked) {
+                color_5.style.backgroundColor = colorObj.color_5;
+                color_name_5.innerText = colorObj.color_5;
+            }
+
+
+        }
+
+
+            function lockContainer(element) {
+                let parent = element.parentElement
+                parent.dataset.isLocked = true
+
+                console.log(parent.id, parent.dataset.isLocked);
+                
+
+            }
+
+    </script>
+
+
+</body>
+
+</html>
