@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+
+<body>
+
+    <input id="input1" placeholder="enter a number"  />
+    <button id="btnAdd">+</button>
+    <input id="input2" placeholder="enter a number"  />
+    =
+    <h1 id="resultText"></h1>
+
+    
+    <script>
+
+        let input1 = document.getElementById("input1");
+        let input2 = document.getElementById("input2");
+        let btnAdd = document.getElementById("btnAdd");
+        let resultText = document.getElementById("resultText");
+
+        btnAdd.onclick = add
+
+        function add(){
+            let result = parseInt(input1.value) + parseInt(input2.value);
+            resultText.innerText = result;
+
+            // if and only if result is == to 100
+            if(result == 100 || result == 200){
+            //  resultText.innerText += "\n" + result == 100;
+             resultText.innerText += "\n YAY You Got Full Mark You Sigma type sh*t";
+            }
+
+            if(result <= 0){
+             resultText.innerText += "\n teamate diff,  GGWP, GLHF";
+            }
+
+            
+
+            
+        }
+
+
+
+    </script>
+
+
+</body>
+
+</html>
