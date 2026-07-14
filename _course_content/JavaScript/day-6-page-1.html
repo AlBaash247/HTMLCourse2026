@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .my-input {
+            width: 300px;
+            height: 32px;
+            font-size: 24px;
+            box-shadow: 0 4px 8px 0 #cecece;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+    <form>
+
+        <input id="inputMark" class="my-input" placeholder="enter a number between 0 - 100" required />
+        <button id="btnSubmit">submit</button>
+        <h1 id="resultText"></h1>
+    </form>
+
+
+    <script>
+
+        let inputMark = document.getElementById("inputMark");
+        let btnSubmit = document.getElementById("btnSubmit");
+        let resultText = document.getElementById("resultText");
+
+
+        btnSubmit.onclick = getGrade
+
+        function getGrade() {
+            resultText.innerText = ""
+
+            let mark = parseInt(inputMark.value)
+
+            if(inputMark.value == ""){
+                alert("enter a number")
+            }
+
+            //if the mark is between 90 <-> 100 say you got A+
+            if (mark >= 90 && mark <= 100) {
+                resultText.innerText = mark + " You got A+"
+            }
+            else if (mark >= 80 && mark <= 89) {
+                resultText.innerText = mark + " You got A"
+            }
+            else if (mark >= 70 && mark <= 79) {
+                resultText.innerText = mark + " You got B"
+            }
+            else if (mark >= 60 && mark <= 69) {
+                resultText.innerText = mark + " You got C"
+            }
+            else if (mark >= 50 && mark <= 59) {
+                resultText.innerText = mark + " You got D"
+            }
+            else if (mark >= 0 && mark <= 49) {
+                resultText.innerText = mark + " You got F"
+            }
+            else{
+                 resultText.innerText = mark + " You are illegal ...."
+
+            }
+        }
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
