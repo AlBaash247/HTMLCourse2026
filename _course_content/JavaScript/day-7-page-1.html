@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .my-input {
+            width: 300px;
+            height: 32px;
+            font-size: 24px;
+            box-shadow: 0 4px 8px 0 #cecece;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+    <form>
+        <button id="btnSubmit">submit</button>
+        <h1 id="resultText"></h1>
+    </form>
+
+
+    <script>
+
+
+        let btnSubmit = document.getElementById("btnSubmit");
+        let resultText = document.getElementById("resultText");
+
+        let y = 10;
+        // create an array with numbers from 1 to 10
+        let x = [4, 8, 12, 7, 9, 3, 1, 34, 228, 0, 9, 110, -1, 55, 90];
+
+        // resultText.innerText = "y = "+ y
+        // resultText.innerText = "x = "+ x
+
+        resultText.innerText = "first index "+ x[0];
+        resultText.innerText += "\n second index = "+ x[1];
+        resultText.innerText += "\n last index = "+ x[ x.length - 1 ];
+        resultText.innerText += "\n x length = " +  x.length ;
+
+        
+        
+        
+        
+        // we want to access all indexes from 0 to x.length 
+        let index = 0;
+        let sum = 0;
+        
+
+        let yousuf = {
+            name : "yousuf ali",
+            phone : 92091168,
+            address: "oman, muscat",
+            pet: "pc mouse"
+        }
+
+        
+        while(index < x.length){
+            // resultText.innerText += "\n\n index: " +index +" => value  = " +  x[index] ;
+
+            sum += x[index];
+            resultText.innerText += "\n\n sum: " + sum 
+            index++;
+        }
+        
+        resultText.innerText += "\n\n total sum: " + sum 
+
+    </script>
+
+
+</body>
+
+</html>
