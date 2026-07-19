@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .my-input {
+            width: 300px;
+            height: 32px;
+            font-size: 24px;
+            box-shadow: 0 4px 8px 0 #cecece;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+
+
+    <h1 id="resultText"></h1>
+
+
+
+    <script>
+
+        let resultText = document.getElementById("resultText");
+
+        let x = [310, 12, 7, 800, 9, 0, 5, -1, 60, 22, 110, 57, 32, 409, 1000];
+
+        sortAsc();
+
+        function printBiggestNumber1() {
+
+            let index = 0;
+            let biggest = x[0]
+            while (index < x.length) {
+                resultText.innerText += "\n-----> biggest is " + biggest;
+                if (biggest < x[index]) {
+                    biggest = x[index];
+                }
+                index++;
+            }
+
+            resultText.innerText += "\n\n\n-----> biggest is " + biggest;
+        }
+
+        function printBiggestNumber2() {
+            let biggest = x[0];
+            for (let i = 0; i < x.length; i++) {
+                resultText.innerText += "\n-----> biggest is " + biggest;
+                if (biggest > x[i]) {
+                    biggest = x[i];
+                }
+            }
+
+            resultText.innerText += "\n\n\n-----> biggest is " + biggest;
+        }
+
+
+        function compare(x, y) {
+            if (x >= y) {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+
+        function sortAsc() {
+            for (let i = 0; i < x.length - 1; i++) {
+                resultText.innerText += " i, ";
+                for (let j = 0; j < x.length - 1; j++) {
+                    // resultText.innerText += " j, ";
+
+                    if (compare(x[j], x[j + 1])) {
+                        let temp = x[j];
+                        x[j] = x[j + 1];
+                        x[j + 1] = temp;
+                    }
+                    resultText.innerText += " ----->  " + x;
+                }
+
+             resultText.innerText += "\n\n ";
+
+
+            }
+            resultText.innerText += "\n-----> x after ASC sort: " + x;
+
+        }
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .my-input {
+            width: 300px;
+            height: 32px;
+            font-size: 24px;
+            box-shadow: 0 4px 8px 0 #cecece;
+        }
+    </style>
+</head>
+
+<body>
+
+        <h1 id="resultText"></h1>
+
+
+
+    <script>
+
+
+        let resultText = document.getElementById("resultText");
+
+        let x = [10, 12, 7 , 8, 9, 0, 5, -1, 60, 22, 1, 57, 32, 9, 10];
+
+        
+        x.forEach(num => {
+            resultText.innerText += "\n"
+            for (let index = 0; index <= num; index++) {
+                resultText.innerText += "*"
+            }
+            
+        });
+
+    </script>
+
+
+</body>
+
+</html>
