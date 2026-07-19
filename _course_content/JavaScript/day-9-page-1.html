@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .my-input {
+            width: 300px;
+            height: 32px;
+            font-size: 24px;
+            box-shadow: 0 4px 8px 0 #cecece;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+
+
+    <h1 id="resultText"></h1>
+
+
+
+    <script>
+
+        let resultText = document.getElementById("resultText");
+
+        let student1 = {
+            id: 10,
+            name: "yousuf",
+            age: 49,
+            address: "Muscat",
+            lng: 12000,
+            lat: 3400,
+            nationality: "Egyptian",
+            subjects: [
+                {
+                    name: "InfoTech",
+                    status: "study",
+                    grade: 0,
+                },
+                {
+                    name: "Chemistry",
+                    status: "passed",
+                    grade: 89,
+                },
+                {
+                    name: "Math",
+                    status: "failed",
+                    grade: 45,
+                },
+                {
+                    name: "Physics",
+                    status: "passed",
+                    grade: 56,
+                },
+            ]
+
+        }
+
+
+        let student2 = {
+            id: 17,
+            name: "Omar",
+            age: 80,
+            address: "Muscat",
+            lng: 134000,
+            lat: 31400,
+            nationality: "Oman",
+            subjects: [
+                {
+                    name: "Hoosh",
+                    status: "study",
+                    grade: 0,
+                }
+            ]
+
+        };
+
+
+        // resultText.textContent = student1.id + " " + student1.name + " " + student1.age;
+
+        let sub1 = student1.subjects[0]
+        let sub2 = student2.subjects[0]
+        // resultText.textContent = sub2.name + " " + sub2.status + " " +sub2.grade
+
+        // printStudentSubjects(student1.subjects)
+        printStudentSubjects(student2.subjects)
+
+        function printStudentSubjects(subjectsArray){
+            subjectsArray.forEach(subject => {
+                       resultText.innerText += "\n "+ subject.name
+        });
+
+        }
+     
+
+
+
+    </script>
+
+
+</body>
+
+</html>
