@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .my-input {
+            width: 300px;
+            height: 32px;
+            font-size: 24px;
+            box-shadow: 0 4px 8px 0 #cecece;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+
+
+    <h1 id="resultText"></h1>
+
+
+
+    <script>
+
+        let resultText = document.getElementById("resultText");
+
+        let x = {
+            id: 123,
+            name : "meaw"
+        }
+     
+
+        let y = {}
+        y.id = 345;
+        y.name = "woof"
+
+
+        resultText.innerText = JSON.stringify(y)
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+
+
+    <h1 id="resultText"></h1>
+
+    <div id="myContainer">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Subject Name</th>
+                    <th>Status</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbody">
+ 
+            </tbody>
+
+        </table>
+
+
+    </div>
+
+
+
+    <script>
+
+        let resultText = document.getElementById("resultText");
+        let tbody = document.getElementById("tbody");
+
+
+        class Student {
+            constructor(id, name, age, gender, nationality, subjects) {
+                this.id = id;
+                this.name = name;
+                this.age = age;
+                this.gender = gender;
+                this.nationality = nationality;
+                this.subjects = subjects;
+            }
+
+            printSubjects(myElement) {
+
+                subjects.forEach((s, index) => {
+
+                let dataRow =    `<tr>
+                    <td>${index+1}</td>
+                    <td>${s.name}</td>
+                    <td>${s.status}</td>
+                    <td>${s.grade}</td>
+                </tr>`;
+            
+                    myElement.innerHTML += dataRow
+
+                });
+            }
+
+
+        }
+
+        let abubakar = new Student();
+        abubakar.id = 100;
+        abubakar.houseNumber = 1201;
+
+        let subjects = [
+            {
+                name: "InfoTech",
+                status: "study",
+                grade: 0,
+            },
+            {
+                name: "Chemistry",
+                status: "passed",
+                grade: 89,
+            },
+            {
+                name: "Math",
+                status: "failed",
+                grade: 45,
+            },
+            {
+                name: "Physics",
+                status: "passed",
+                grade: 56,
+            },
+            {
+                name: "meawsa",
+                status: "passed",
+                grade: 67,
+            },
+            {
+                name: "Yappdodel",
+                status: "passed",
+                grade: 78,
+            },
+        ];
+
+
+        abubakar.subjects = subjects
+
+        abubakar.printSubjects(tbody);
+
+
+
+    </script>
+
+
+</body>
+
+</html>
