@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .my-container {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .card {
+            width: 400px;
+            height: 300px;
+            border-radius: 8px;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            padding: 16px;
+            margin: 32px;
+            box-shadow: 0 4px 8px 0 silver;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+
+    <div id="myContainer" class="my-container">
+        <!-- card template lives here -->
+    </div>
+
+    <template id="cardTemplate">
+        <div id="card" class="card">
+            <h3 id="cardTitle" class="card-title">Title </h3>
+            <p id="cardBody" class="card-body">Body</p>
+        </div>
+    </template>
+
+    <script>
+        let btnCreate = document.getElementById("btnCreate");
+        let myContainer = document.getElementById("myContainer");
+        let cardTemplate = document.getElementById("cardTemplate");
+
+
+        class Student {
+            constructor(id, name, age, gender, nationality, subjects) {
+                this.id = id;
+                this.name = name;
+                this.age = age;
+                this.gender = gender;
+                this.nationality = nationality;
+                this.subjects = subjects;
+            }
+
+            printSubjects(myElement) {
+
+                subjects.forEach((sub, index) => {
+
+                   this.createCard(myElement, sub, index)
+
+                });
+            }
+
+        
+         createCard(myElement, sub, index){
+            // clone/copy template content
+            let clone = cardTemplate.content.cloneNode(true);
+            let card = clone.getElementById("card");
+            let cardTitle = clone.getElementById("cardTitle");
+            let cardBody = clone.getElementById("cardBody");
+
+            let title = sub.name;
+            let body = sub.status + " | "+ sub.grade;
+            
+            cardTitle.innerText = title
+            cardBody.innerText = body
+
+            card.onclick = function() {
+                alert(title)
+            }
+
+
+
+            myElement.appendChild(clone);
+
+            index++;
+        }
+
+
+        }
+
+        let abubakar = new Student();
+        abubakar.id = 100;
+        abubakar.houseNumber = 1201;
+
+        let subjects = [
+            {
+                name: "InfoTech",
+                status: "study",
+                grade: 0,
+            },
+            {
+                name: "Chemistry",
+                status: "passed",
+                grade: 89,
+            },
+            {
+                name: "Math",
+                status: "failed",
+                grade: 45,
+            },
+            {
+                name: "Physics",
+                status: "passed",
+                grade: 56,
+            },
+            {
+                name: "meawsa",
+                status: "passed",
+                grade: 67,
+            },
+            {
+                name: "Yappdodel",
+                status: "passed",
+                grade: 78,
+            },
+        ];
+
+
+        abubakar.subjects = subjects
+
+        abubakar.printSubjects(myContainer)
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

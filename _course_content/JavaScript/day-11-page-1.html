@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .my-container {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .card {
+            width: 400px;
+            height: 300px;
+            border-radius: 8px;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            padding: 16px;
+            margin: 32px;
+            box-shadow: 0 4px 8px 0 silver;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+
+
+
+
+    <button id="btnCreate"> Create Card </button>
+
+    <div id="myContainer" class="my-container">
+
+
+    </div>
+
+
+
+    <script>
+        let btnCreate = document.getElementById("btnCreate");
+        let myContainer = document.getElementById("myContainer");
+
+
+        btnCreate.onclick = createCard
+
+
+        let i = 0;
+
+        function createCard() {
+            
+            let card = `<div id="card_${i+1}" class="card" onclick="showAlert('Title ${i+1}')">
+            <h3 id="cardTitle" class="card-title">Title ${i+1}</h3>
+            <p id="cardBody" class="card-body">Body</p>
+        </div>`
+
+
+        myContainer.innerHTML += card
+
+        i++
+
+        }
+
+        function showAlert(index){
+            alert(index)
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
