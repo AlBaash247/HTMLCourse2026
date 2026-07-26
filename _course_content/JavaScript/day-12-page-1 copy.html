@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+
+
+    <h1 id="resultText"></h1>
+
+    <div id="myContainer">
+
+        <table>
+            <thead>
+                <tr id="thead">
+
+                </tr>
+            </thead>
+
+            <tbody id="tbody">
+
+            </tbody>
+
+        </table>
+
+
+    </div>
+
+
+
+    <script>
+
+        let resultText = document.getElementById("resultText");
+        let thead = document.getElementById("thead");
+        let tbody = document.getElementById("tbody");
+
+
+        class Student {
+            constructor(id, name, age, gender, nationality, subjects) {
+                this.id = id;
+                this.name = name;
+                this.age = age;
+                this.gender = gender;
+                this.nationality = nationality;
+                this.subjects = subjects;
+            }
+
+            printSubjects(tableHeaderElement, tableBodyElement) {
+
+                let indexColumn = `<th>#</th>`;
+                tableHeaderElement.innerHTML= indexColumn;
+
+                Object.keys(this.subjects[0]).forEach(key => {
+                    let header = `<th>${key}</th>`;
+                    tableHeaderElement.innerHTML += header
+                });
+
+
+                subjects.forEach((s, index) => {
+                    let dataRow = `<tr>
+                        <td>${index+1}</td>
+                        `
+                    Object.keys(s).forEach(key => {
+                        // s.id or s.name
+                        dataRow += `<td>${s[key]}</td>`;
+                    });
+                    dataRow += `</tr>`;
+                    tableBodyElement.innerHTML += dataRow
+
+
+                });
+            }
+
+
+        }
+
+        let abubakar = new Student();
+        abubakar.id = 100;
+        abubakar.houseNumber = 1201;
+
+        let subjects = [
+            {
+                name: "InfoTech",
+                status: "study",
+                year: 2027,
+                grade: 0,
+
+                note: " meaw ..."
+            },
+            {
+                name: "Chemistry",
+                status: "passed",
+                year: 2027,
+                grade: 89,
+                note: " meaw ..."
+            },
+            {
+                name: "Math",
+                status: "failed",
+                year: 2025,
+                grade: 45,
+                note: " meaw ..."
+            },
+            {
+                name: "Physics",
+                status: "passed",
+                year: 2023,
+                grade: 56,
+                note: " meaw ..."
+            },
+            {
+                name: "meawsa",
+                status: "passed",
+                year: 2024,
+                grade: 67,
+                note: " meaw ..."
+            },
+            {
+                name: "Yappdodel",
+                status: "passed",
+                year: 2025,
+                grade: 78,
+                note: " meaw ..."
+            },
+        ];
+
+
+        abubakar.subjects = subjects
+
+        abubakar.printSubjects(thead, tbody);
+
+
+
+    </script>
+
+
+</body>
+
+</html>
