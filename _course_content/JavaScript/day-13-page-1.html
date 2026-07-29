@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        .main-container {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .student-card {
+            padding: 16px;
+            margin: 32px;
+            border: 1px solid silver;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 9px 9px 25px #f5f5f5, -9px -9px 25px white;
+        }
+
+        .student-card-details {
+            padding: 16px;
+            background-color: #f5f5f5;
+            margin-bottom: 16px;
+        }
+
+        .student-card-submit-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 32px;
+        }
+
+        .btn {
+            font-size: 16px;
+            padding: 16px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+
+        .btn-primary {
+            color: white;
+            background-color: #234990;
+        }
+
+        .btn-secondary {
+            color: white;
+            background-color: turquoise;
+        }
+
+        .gap-16 {
+            gap: 16px;
+        }
+
+
+        .mb-16 {
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+
+
+    <h1 id="resultText"></h1>
+
+    <div class="form-container student-card ">
+        <!-- id , name, age, nat, address -->
+        <h3>Insert Student Details</h3>
+
+        <div class="main-container gap-16 mb-16">
+            <div>
+                <label for="inputStudentId">Id</label>
+                <input id="inputStudentId" type="number" placeholder="enter student id" required>
+            </div>
+            <div>
+                <label for="inputStudentName">Name</label>
+                <input id="inputStudentName" type="text" placeholder="enter student name" required>
+            </div>
+            <div>
+
+                <label for="inputStudentAge">Age</label>
+                <input id="inputStudentAge" type="number" placeholder="enter student age" required>
+            </div>
+            <div>
+                <label for="inputStudentNationality">Nationality</label>
+                <input id="inputStudentNationality" type="text" placeholder="enter student nationality" required>
+            </div>
+            <div>
+                <label for="inputStudentAddress">Address</label>
+                <input id="inputStudentAddress" type="text" placeholder="enter student address" required>
+            </div>
+        </div>
+
+        <!-- id , name, status, year, grade -->
+        <h3>Insert subjects Details</h3>
+
+        <div class="main-container gap-16">
+            <div>
+                <label for="inputSubjectId">Id</label>
+                <input id="inputSubjectId" type="number" placeholder="enter Subject id" required>
+            </div>
+            <div>
+                <label for="inputSubjectName">Name</label>
+                <input id="inputSubjectName" type="text" placeholder="enter Subject name" required>
+            </div>
+            <div>
+                <label for="inputSubjectStatus">Status</label>
+                <input id="inputSubjectStatus" type="number" placeholder="enter Subject Status" required>
+            </div>
+            <div>
+                <label for="inputSubjectYear">Year</label>
+                <input id="inputSubjectYear" type="number" placeholder="enter Subject Year" required>
+            </div>
+            <div>
+                <label for="inputSubjectGrade">Grade</label>
+                <input id="inputSubjectGrade" type="number" placeholder="enter Subject Grade" required>
+            </div>
+
+        </div>
+
+        <div class="student-card-submit-area">
+            <button id="btnCreateStudent" class="btn btn-primary">Create New Student +</button>
+
+        </div>
+
+    </div>
+
+
+
+    <div id="myContainer" class="main-container">
+        <!--  templateStudentCard template lives here -->
+
+    </div>
+
+
+
+    <template id="templateStudentCard">
+        <div class="student-card">
+
+            <h3 id="studentName">Ahmed</h3>
+
+            <div class="student-card-details">
+                <div>
+                    <span>id : </span>
+                    <span id="studentId">1</span>
+                </div>
+                <div>
+                    <span>Age : </span>
+                    <span id="studentAge">12</span>
+                </div>
+                <div>
+                    <span>Nationality : </span>
+                    <span id="studentNationality">1</span>
+                </div>
+                <div>
+                    <span>Address : </span>
+                    <span id="studentAddress">1</span>
+                </div>
+
+            </div>
+
+            <table>
+                <thead>
+                    <tr id="thead">
+                        <th>Subject</th>
+                        <th>Status</th>
+                        <th>Year</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tbody">
+                    <tr>
+                        <td>Subject</td>
+                        <td>Status</td>
+                        <td>Year</td>
+                        <td>Grade</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </template>
+
+
+    <script>
+
+        // we need 2 classes : student & subject
+
+        class Student {
+            // id, name, age, nat, address, subjects
+            constructor(id, name, age, nationality, address, subjects) {
+                this.id = id;
+                this.name = name;
+                this.age = age;
+                this.nationality = nationality;
+                this.address = address;
+                this.subjects = subjects;
+            }
+        }
+
+        class Subject {
+            // id, name, status, year, grade
+            constructor(id, name, status, year, grade) {
+                this.id = id;
+                this.name = name;
+                this.status = status;
+                this.year;
+                this.grade = grade;
+            }
+        }
+
+
+        let resultText = document.getElementById("resultText");
+        let myContainer = document.getElementById("myContainer");
+        let templateStudentCard = document.getElementById("templateStudentCard");
+
+        let inputStudentId = document.getElementById("inputStudentId");
+        let inputStudentName = document.getElementById("inputStudentName");
+        let inputStudentAge = document.getElementById("inputStudentAge");
+        let inputStudentNationality = document.getElementById("inputStudentNationality");
+        let inputStudentAddress = document.getElementById("inputStudentAddress");
+
+        let btnCreateStudent = document.getElementById("btnCreateStudent");
+
+
+        btnCreateStudent.onclick = function () {
+            createNewStudent();
+            displayAllStudents();
+        }
+
+
+        let studentsList = [];
+
+        function createNewStudent() {
+            let sid = parseInt(inputStudentId.value);
+            let sName = inputStudentName.value;
+            let sAge = parseInt(inputStudentAge.value);
+            let sNationality = inputStudentNationality.value;
+            let sAddress = inputStudentAddress.value;
+
+            let student_1 = new Student();
+            student_1.id = sid;
+            student_1.name = sName;
+            student_1.Age = sAge;
+            student_1.nationality = sNationality;
+            student_1.address = sAddress;
+
+            // store student object to the array
+            studentsList.push(student_1);
+            console.log(studentsList);
+        }
+
+        function displayAllStudents() {
+            myContainer.innerHTML = ""
+            studentsList.forEach(student => {
+                let clone = templateStudentCard.content.cloneNode(true);
+                let studentName = clone.getElementById("studentName")
+                studentName.innerText = student.name;
+
+                myContainer.appendChild(clone)
+            });
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
