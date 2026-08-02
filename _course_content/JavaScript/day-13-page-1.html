@@ -69,7 +69,7 @@
 
         .btn-secondary {
             color: white;
-            background-color: turquoise;
+            background-color: rgb(187, 224, 64);
         }
 
         .gap-16 {
@@ -98,24 +98,25 @@
         <div class="main-container gap-16 mb-16">
             <div>
                 <label for="inputStudentId">Id</label>
-                <input id="inputStudentId" type="number" placeholder="enter student id" required>
+                <input id="inputStudentId" type="number" placeholder="enter student id" value="1" required>
             </div>
             <div>
                 <label for="inputStudentName">Name</label>
-                <input id="inputStudentName" type="text" placeholder="enter student name" required>
+                <input id="inputStudentName" type="text" placeholder="enter student name" value="67" required>
             </div>
             <div>
 
                 <label for="inputStudentAge">Age</label>
-                <input id="inputStudentAge" type="number" placeholder="enter student age" required>
+                <input id="inputStudentAge" type="number" placeholder="enter student age" value="0" required>
             </div>
             <div>
                 <label for="inputStudentNationality">Nationality</label>
-                <input id="inputStudentNationality" type="text" placeholder="enter student nationality" required>
+                <input id="inputStudentNationality" type="text" placeholder="enter student nationality" value="meawsa"
+                    required>
             </div>
             <div>
                 <label for="inputStudentAddress">Address</label>
-                <input id="inputStudentAddress" type="text" placeholder="enter student address" required>
+                <input id="inputStudentAddress" type="text" placeholder="enter student address" value="1st" required>
             </div>
         </div>
 
@@ -125,26 +126,29 @@
         <div class="main-container gap-16">
             <div>
                 <label for="inputSubjectId">Id</label>
-                <input id="inputSubjectId" type="number" placeholder="enter Subject id" required>
+                <input id="inputSubjectId" type="number" placeholder="enter Subject id" value="100" required>
             </div>
             <div>
                 <label for="inputSubjectName">Name</label>
-                <input id="inputSubjectName" type="text" placeholder="enter Subject name" required>
+                <input id="inputSubjectName" type="text" placeholder="enter Subject name" value="math" required>
             </div>
             <div>
                 <label for="inputSubjectStatus">Status</label>
-                <input id="inputSubjectStatus" type="number" placeholder="enter Subject Status" required>
+                <input id="inputSubjectStatus" type="text" placeholder="enter Subject Status" value="fail" required>
             </div>
             <div>
                 <label for="inputSubjectYear">Year</label>
-                <input id="inputSubjectYear" type="number" placeholder="enter Subject Year" required>
+                <input id="inputSubjectYear" type="number" placeholder="enter Subject Year" value="1359" required>
             </div>
             <div>
                 <label for="inputSubjectGrade">Grade</label>
-                <input id="inputSubjectGrade" type="number" placeholder="enter Subject Grade" required>
+                <input id="inputSubjectGrade" type="number" placeholder="enter Subject Grade" value="33" required>
             </div>
 
         </div>
+
+
+
 
         <div class="student-card-submit-area">
             <button id="btnCreateStudent" class="btn btn-primary">Create New Student +</button>
@@ -224,7 +228,11 @@
                 this.age = age;
                 this.nationality = nationality;
                 this.address = address;
-                this.subjects = subjects;
+                this.subjects = subjects || [];
+            }
+
+            pushSubject(newsubject) {
+                this.subjects.push(newsubject);
             }
         }
 
@@ -234,7 +242,7 @@
                 this.id = id;
                 this.name = name;
                 this.status = status;
-                this.year;
+                this.year = year;
                 this.grade = grade;
             }
         }
@@ -250,8 +258,14 @@
         let inputStudentNationality = document.getElementById("inputStudentNationality");
         let inputStudentAddress = document.getElementById("inputStudentAddress");
 
-        let btnCreateStudent = document.getElementById("btnCreateStudent");
+        let inputSubjectId = document.getElementById("inputSubjectId");
+        let inputSubjectName = document.getElementById("inputSubjectName");
+        let inputSubjectStatus = document.getElementById("inputSubjectStatus");
+        let inputSubjectYear = document.getElementById("inputSubjectYear");
+        let inputSubjectGrade = document.getElementById("inputSubjectGrade");
 
+
+        let btnCreateStudent = document.getElementById("btnCreateStudent");
 
         btnCreateStudent.onclick = function () {
             createNewStudent();
@@ -261,24 +275,64 @@
 
         let studentsList = [];
 
+
         function createNewStudent() {
             let sid = parseInt(inputStudentId.value);
-            let sName = inputStudentName.value;
-            let sAge = parseInt(inputStudentAge.value);
-            let sNationality = inputStudentNationality.value;
-            let sAddress = inputStudentAddress.value;
 
-            let student_1 = new Student();
-            student_1.id = sid;
-            student_1.name = sName;
-            student_1.Age = sAge;
-            student_1.nationality = sNationality;
-            student_1.address = sAddress;
+            let student_1 = findStudent(sid)
 
-            // store student object to the array
-            studentsList.push(student_1);
-            console.log(studentsList);
+
+            if (!student_1) {
+                let sName = inputStudentName.value;
+                let sAge = parseInt(inputStudentAge.value);
+                let sNationality = inputStudentNationality.value;
+                let sAddress = inputStudentAddress.value;
+
+                student_1 = new Student();
+                student_1.id = sid;
+                student_1.name = sName;
+                student_1.Age = sAge;
+                student_1.nationality = sNationality;
+                student_1.address = sAddress;
+
+                studentsList.push(student_1);
+            }
+
+
+            createNewSubject(student_1);
+
         }
+
+
+        function findStudent(studentId) {
+            return studentsList.find(element => element.id === studentId);
+        }
+
+
+        function findSubject(studentObject, subjectId) {
+            return studentObject.subjects.find(element => element.id === subjectId);
+        }
+
+        function createNewSubject(studentObject) {
+
+            let subjectId = parseInt(inputSubjectId.value);
+            if (!findSubject(studentObject, subjectId)){
+
+                let subject_1 = new Subject();
+                subject_1.id = subjectId
+                subject_1.name = inputSubjectName.value;
+                subject_1.status = inputSubjectStatus.value;
+                subject_1.year = parseInt(inputSubjectYear.value)
+                subject_1.grade = parseInt(inputSubjectGrade);
+                studentObject.pushSubject(subject_1)
+            }
+
+            console.log(studentsList);
+
+        }
+
+
+
 
         function displayAllStudents() {
             myContainer.innerHTML = ""
