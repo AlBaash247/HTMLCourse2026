@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .card{
+            box-shadow: 0 4px 8px 0 silver;
+            width: 300px;
+            padding: 16px;
+        }
+
+        .card-img{
+            width: 100%;
+        }
+
+        .row{
+            display: flex;
+        }
+
+        .wrap{
+            flex-wrap: wrap;
+        }
+
+        .gap-8{
+            gap: 8px
+        }
+
+        .gap-16{
+            gap: 16px
+        }
+    </style>
+  
+</head>
+
+
+
+<body>
+
+
+    <div id="myContainer" class="row wrap gap-16">
+    <!-- templateCard lives here -->
+    </div>
+
+    
+    
+    <template id="templateCard">
+
+    <div class="card">
+        
+        <img id="cardImg"  class="card-img" src="">
+        <div class="row gap-8">
+            <h3> id: </h3> 
+            <h3 id="cardId"></h3>
+        </div>
+        <div class="row gap-8">
+            <h3> Author: </h3> 
+            <h3 id="cardAuthor"></h3>
+        </div>
+    </div>
+    </template>
+
+
+    <script>
+
+        let myContainer = document.getElementById("myContainer");
+        let templateCard = document.getElementById("templateCard");
+
+   
+    ApiRequestGetImgs();
+
+    async function ApiRequestGetImgs(){
+
+        let response = await fetch("https://picsum.photos/v2/list?page=1&limit=3");
+
+        console.log("response", response);
+        
+        if(!response.ok){
+            alert("what have you done!!!!!! "+response.status )
+            return;
+        }
+
+        let jsonResponse = await response.json();
+
+        console.log("jsonResponse", jsonResponse);
+
+
+        createImageCard(jsonResponse[1]);
+
+    }
+
+  
+
+  function createImageCard(pictureObject){
+    let clone = templateCard.content.cloneNode(true);
+    let cardImg = clone.getElementById("cardImg");
+    let cardId = clone.getElementById("cardId");
+    let cardAuthor = clone.getElementById("cardAuthor");
+
+
+    cardId.innerText = pictureObject.id;
+    cardImg.src = pictureObject.download_url;
+    cardAuthor.innerText = pictureObject.author;
+
+    myContainer.appendChild(clone)
+  }
+    
+
+
+        
+        // function displayAllStudents() {
+        //     myContainer.innerHTML = ""
+           
+        //         let studentName = clone.getElementById("studentName")
+        //         studentName.innerText = student.name;
+
+        //        
+            
+        // }
+
+    </script>
+
+
+</body>
+
+</html>
