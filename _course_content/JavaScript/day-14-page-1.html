@@ -32,6 +32,15 @@
         .gap-16{
             gap: 16px
         }
+
+        .mb-16{
+            margin-bottom: 16px;
+        }
+
+        input{
+            width: 400px;
+            font-size: larger;
+        }
     </style>
   
 </head>
@@ -40,6 +49,14 @@
 
 <body>
 
+    <div class="my-container gap-8 mb-16">
+
+        <input id="inputImgsLimiter" type="number" placeholder="limit number of images in the page" value="20"/>
+        <input id="inputImgsPage" type="number" placeholder="limit number of the page" value="1"/>
+
+        <button id="btnSubmit">Submit</button>
+
+    </div>
 
     <div id="myContainer" class="row wrap gap-16">
     <!-- templateCard lives here -->
@@ -66,15 +83,40 @@
 
     <script>
 
+
         let myContainer = document.getElementById("myContainer");
         let templateCard = document.getElementById("templateCard");
+      
+        let inputImgsLimiter = document.getElementById("inputImgsLimiter");
+        let inputImgsPage = document.getElementById("inputImgsPage");
+        let btnSubmit = document.getElementById("btnSubmit");
+
+        btnSubmit.onclick =  ApiRequestGetImgs
+
+        class PicsumPhotos{
+            constructor(id, author, width, height, url, download_url){
+                this.id = id;
+                this.author = author;
+                this.width = width;
+                this.height = height;
+                this.url = url
+                this.download_url = download_url
+            }
+        }
+
+        let  photosList = [];
 
    
     ApiRequestGetImgs();
 
     async function ApiRequestGetImgs(){
 
-        let response = await fetch("https://picsum.photos/v2/list?page=1&limit=3");
+        myContainer.innerHTML = "";
+
+        let page = parseInt(inputImgsPage.value);
+        let limit = parseInt(inputImgsLimiter.value);
+
+        let response = await fetch(`https://picsum.photos/v2/list?page=${page}&limit=${limit}`);
 
         console.log("response", response);
         
@@ -87,8 +129,9 @@
 
         console.log("jsonResponse", jsonResponse);
 
-
-        createImageCard(jsonResponse[1]);
+        jsonResponse.forEach(p => {
+            createImageCard(p);   
+        });
 
     }
 
@@ -100,12 +143,25 @@
     let cardId = clone.getElementById("cardId");
     let cardAuthor = clone.getElementById("cardAuthor");
 
-
     cardId.innerText = pictureObject.id;
     cardImg.src = pictureObject.download_url;
     cardAuthor.innerText = pictureObject.author;
 
-    myContainer.appendChild(clone)
+    let picsumPhotosObject = new PicsumPhotos();
+     picsumPhotosObject.id = pictureObject.id;
+     picsumPhotosObject.author = pictureObject.author;
+     picsumPhotosObject.width = pictureObject.width;
+     picsumPhotosObject.height = pictureObject.height;
+     picsumPhotosObject.url = pictureObject.url
+     picsumPhotosObject.download_url = pictureObject.download_url
+
+    photosList.push(picsumPhotosObject);
+
+    myContainer.appendChild(clone);
+
+
+    console.log(photosList);
+    
   }
     
 
