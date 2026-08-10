@@ -21,6 +21,8 @@
     <button id="btnPing">ping</button>
     <button id="btnRegister">Register</button>
     <button id="btnLogin">Login</button>
+    <button id="btnDisplayToken">Display token</button>
+    <button id="btnUser"> User</button>
 
 <script>
 
@@ -29,6 +31,8 @@ let textResult = document.getElementById("textResult")
 let btnPing = document.getElementById("btnPing")
 let btnRegister = document.getElementById("btnRegister")
 let btnLogin = document.getElementById("btnLogin")
+let btnDisplayToken = document.getElementById("btnDisplayToken")
+let btnUser= document.getElementById("btnUser")
 
 let inputName = document.getElementById("inputName")
 let inputEmail = document.getElementById("inputEmail")
@@ -38,8 +42,12 @@ let inputPassword = document.getElementById("inputPassword")
 btnPing.onclick = ApiRequestAuthPing
 btnRegister.onclick = ApiRequestAuthRegister
 btnLogin.onclick = ApiRequestAuthLogin
+btnDisplayToken.onclick = displayToken
+btnUser.onclick = ApiRequestAuthUser
 
-const BASE_URL = "https://www.albaash247.cloud/api"
+const BASE_URL = "https://www.albaash247.cloud/api";
+
+const STORAGE_KEY_TOKEN = "TOKEN";
 
 async function ApiRequestAuthPing(){
     let response = await fetch(`${BASE_URL}/auth/ping`);
@@ -58,6 +66,27 @@ async function ApiRequestAuthPing(){
 }
 
 
+function get_header(method, data){
+let token =localStorage.getItem(STORAGE_KEY_TOKEN);
+console.log("token", token);
+
+
+    let headerObject = {
+        method:method,
+        header:{
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Bearer ' + token
+        }
+    }
+   
+    if(method !== "GET"){
+        headerObject.body = new URLSearchParams(data);
+    }
+
+    return headerObject;
+}
+
+
 async function ApiRequestAuthRegister(){
 // TODO : 1. form validation
 // TODO : 2. validate the email "test@domain.com" -> validate email using regex
@@ -71,13 +100,7 @@ async function ApiRequestAuthRegister(){
         c_password: inputPassword.value,
     }
 
-    let myMethod = {
-        method : 'POST',
-        body: new URLSearchParams(data)
-    }
-
-
-    let response = await fetch(`${BASE_URL}/auth/register`, myMethod);
+    let response = await fetch(`${BASE_URL}/auth/register`, get_header("POST", data));
 
   
        
@@ -106,16 +129,32 @@ async function ApiRequestAuthLogin(){
         password: inputPassword.value,
     }
 
-    let myMethod = {
-        method : 'POST',
-        body: new URLSearchParams(data)
-    }
-
-
-    let response = await fetch(`${BASE_URL}/auth/login`, myMethod);
+    let response = await fetch(`${BASE_URL}/auth/login`, get_header("POST", data));
 
   
        
+    console.log("response", response);
+        
+        if(!response.ok){
+            alert("what have you done!!!!!! "+response.status )
+            return;
+        }
+       
+        let jsonResponse = await response.json();
+        console.log("jsonResponse", jsonResponse.data.token);
+        // store the token
+       localStorage.setItem(STORAGE_KEY_TOKEN , jsonResponse.data.token);
+
+        textResult.innerHTML = JSON.stringify(jsonResponse.data.token)
+}
+
+
+async function ApiRequestAuthUser(){
+
+
+    let response = await fetch(`${BASE_URL}/auth/user`, get_header("GET", null));
+
+
     console.log("response", response);
         
         if(!response.ok){
@@ -128,6 +167,13 @@ async function ApiRequestAuthLogin(){
 
         textResult.innerHTML = JSON.stringify(jsonResponse)
 }
+
+
+function displayToken() {
+   alert (localStorage.getItem(STORAGE_KEY_TOKEN)) ;
+}
+
+//localStorage.setItem()
 
 
 
