@@ -23,6 +23,7 @@
     <button id="btnLogin">Login</button>
     <button id="btnDisplayToken">Display token</button>
     <button id="btnUser"> User</button>
+    <button id="btnLogout"> Logout</button>
 
 <script>
 
@@ -33,6 +34,7 @@ let btnRegister = document.getElementById("btnRegister")
 let btnLogin = document.getElementById("btnLogin")
 let btnDisplayToken = document.getElementById("btnDisplayToken")
 let btnUser= document.getElementById("btnUser")
+let btnLogout= document.getElementById("btnLogout")
 
 let inputName = document.getElementById("inputName")
 let inputEmail = document.getElementById("inputEmail")
@@ -44,10 +46,14 @@ btnRegister.onclick = ApiRequestAuthRegister
 btnLogin.onclick = ApiRequestAuthLogin
 btnDisplayToken.onclick = displayToken
 btnUser.onclick = ApiRequestAuthUser
+btnLogout.onclick = ApiRequestAuthLogout
 
 const BASE_URL = "https://www.albaash247.cloud/api";
 
 const STORAGE_KEY_TOKEN = "TOKEN";
+
+const METHOD_GET = "GET";
+const METHOD_POST = "POST";
 
 async function ApiRequestAuthPing(){
     let response = await fetch(`${BASE_URL}/auth/ping`);
@@ -76,7 +82,7 @@ function get_header(method, data){
         }
     }
    
-    if(method !== "GET"){
+    if(method !== METHOD_GET){
         headerObject.body = new URLSearchParams(data);
     }
 
@@ -97,7 +103,7 @@ async function ApiRequestAuthRegister(){
         c_password: inputPassword.value,
     }
 
-    let response = await fetch(`${BASE_URL}/auth/register`, get_header("POST", data));
+    let response = await fetch(`${BASE_URL}/auth/register`, get_header(METHOD_POST, data));
 
   
        
@@ -126,7 +132,7 @@ async function ApiRequestAuthLogin(){
         password: inputPassword.value,
     }
 
-    let response = await fetch(`${BASE_URL}/auth/login`, get_header("POST", data));
+    let response = await fetch(`${BASE_URL}/auth/login`, get_header(METHOD_POST, data));
 
   
        
@@ -149,7 +155,7 @@ async function ApiRequestAuthLogin(){
 async function ApiRequestAuthUser(){
 
 
-    let response = await fetch(`${BASE_URL}/auth/user`, get_header("GET", null));
+    let response = await fetch(`${BASE_URL}/auth/user`, get_header(METHOD_GET, null));
 
 
     console.log("response", response);
@@ -164,6 +170,27 @@ async function ApiRequestAuthUser(){
 
         textResult.innerHTML = JSON.stringify(jsonResponse)
 }
+
+
+async function ApiRequestAuthLogout(){
+
+
+    let response = await fetch(`${BASE_URL}/auth/logout`, get_header(METHOD_GET, null));
+
+
+    console.log("response", response);
+        
+        if(!response.ok){
+            alert("what have you done!!!!!! "+response.status )
+            return;
+        }
+       
+        let jsonResponse = await response.json();
+        console.log("jsonResponse", jsonResponse);
+
+        textResult.innerHTML = JSON.stringify(jsonResponse)
+}
+
 
 
 function displayToken() {
