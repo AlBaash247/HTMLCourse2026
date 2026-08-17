@@ -1,4 +1,4 @@
-import {BASE_URL, get_header, METHOD_POST, STORAGE_KEY_TOKEN} from '../constants/api.js'
+import {BASE_URL, get_header, METHOD_POST, METHOD_GET, STORAGE_KEY_TOKEN} from '../constants/api.js'
 
 let textResult = document.getElementById("textResult")
 let btnPing = document.getElementById("btnPing")
