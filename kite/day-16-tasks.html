@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 
     <h1>Tasks Page</h1>
@@ -13,14 +15,35 @@
 
 
     <h1 id="textResult"></h1>
-    <br/>
-    <br/>
+    <br />
+    <br />
 
+    <input id="inpuTaskName" type="text" placeholder="Task Name" />
+    <br />
+    <label for="inpuTaskDone"> is done </label>
+    <input id="inpuTaskDone" type="checkbox"/>
+    <br />
+    <input id="inpuTaskDesc" type="text" placeholder="Task Desc" />
+    <br />
+    <select id="inpuTaskCatId">
+        <option value="1">Log</option>
+        <option value="2">Todo</option>
+        <option value="3">In Progress</option>
+        <option value="4">Review</option>
+        <option value="5">Done</option>
+        <option value="6">Quick Tasks</option>
+    </select>
+
+
+    <br />
+    <br />
     <button id="btnPing">ping</button>
+    <button id="btnCreate">Create</button>
     <button id="btnIndex">index</button>
 
 
-<script src="./js/scripts/tasks.js"  type="module"></script>
+    <script src="./js/scripts/tasks.js" type="module"></script>
 
 </body>
+
 </html>
